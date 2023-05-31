@@ -1,0 +1,22 @@
+app-col-left {
+  height: 0;
+}
+
+.unmatched {
+  padding: 2px 4px;
+  background-color: #e98fff;
+  border-radius: 4px;
+  color: #1e1e1e;
+  line-height: 1;
+  display: inline-block;
+}
+ .headercss {
+display: none !important;
+}
+
+.blink_me1 {
+  animation: blinker 3s linear infinite;
+  color: #DD1EF8;
+  font-weight: 700;
+}
+

@@ -1,0 +1,214 @@
+<div class="col-xs-push-12">
+  <div class="row">
+    <div class="col-lg-3 col-sm-3">
+      <label> Start Date:</label>
+      <div class="input-group" id="startDateBox">
+        <input
+          type="text"
+          placeholder="from"
+          class="form-control"
+          bsDatepicker
+          [minDate]="month"
+          [maxDate]="toDate"
+          [(bsValue)]="fromDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-3">
+      <label> End Date:</label>
+      <div class="input-group" id="endDateBox">
+        <input
+          type="text"
+          placeholder="to"
+          class="form-control"
+          bsDatepicker
+          [minDate]="fromDate"
+          [maxDate]="today"
+          [(bsValue)]="toDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-3">
+      <label>&nbsp;</label><br />
+      <!-- <input
+        type="button"
+        value="Load Report"
+        id="MasterContentPlaceHolder_loadbtn"
+        class="btn btn-blue"
+        data-ng-click="AccountStatement()"
+      /> -->
+      <a class="btn btn-blue" (click)="getAccountStatement()">Load Report </a>
+    </div>
+  </div>
+
+  <hr />
+
+  <div id="accStmnt" class="widget" *ngIf="!selectedRow">
+    <div class="widget-header">
+      <div class="btn-group pull-left" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle"
+                aria-controls="dropdown-basic">
+                <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'xml'">XML</a></li>
+          <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'csv'">CSV</a></li>
+          <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'xls'">MS-Excel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget-body">
+      <div class="table-responsive" id="no-more-tables">
+        <!-- <div class="rptPreloader">
+          <img src="assets/img/squares.gif" alt="loading..." />
+        </div> -->
+        <table
+          id="no-more-tables"
+          class="table table table-bordered table-hover table-striped"
+        >
+          <thead>
+            <tr>
+              <th>Voucher ID</th>
+              <th>Market ID</th>
+              <th>Settled Date</th>
+              <th>Narration</th>
+              <th>Debit</th>
+              <th>Credit</th>
+              <th>Running Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of accountStatement">
+              <td data-title="Voucher ID">{{ item.vouchertId }}</td>
+              <td data-title="Market ID">
+                {{
+                  item.marketId
+                }}
+              </td>
+              <td data-title="Settled Date">
+                {{ item.settlementDate | date: "M/dd/yyyy h:mm:ss aa" }}
+              </td>
+              <td data-title="Narration">
+                <a (click)="getSubOrders(item)"> {{ item.narration }}</a>
+              </td>
+              <td
+                data-title="Debit"
+                class="amnt negative"
+              >
+                {{ item.debit * -1 | number: "0.2" }}
+              </td>
+              <td
+                data-title="Credit"
+                class="amnt"
+                [ngClass]="item.credit >= 0 ? 'positive' : 'negative'"
+              >
+                {{ item.credit | number: "0.2" }}
+              </td>
+              <td
+                data-title="Running Balance"
+                class="amnt"
+                [ngClass]="item.runningBalance >= 0 ? 'positive' : 'negative'"
+              >
+                {{ item.runningBalance | number: "0.2" }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="subRpt" class="widget" *ngIf="selectedRow">
+    <div class="widget-header">
+      <div class="btn-group pull-left">
+        <button
+          type="button"
+          id="btnPrev"
+          class="btn btn-default"
+          (click)="getPreviousPage()"
+        >
+          <i class="fa fa-arrow-circle-left"></i>
+        </button>
+        <button
+          aria-expanded="false"
+          class="btn btn-default dropdown-toggle"
+          data-toggle="dropdown"
+          type="button"
+        >
+          <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li data-type="xml">
+            <a onclick="tExport('xml','tblSubOrders','AccountStatement')"
+              >XML</a
+            >
+          </li>
+          <li data-type="csv">
+            <a onclick="tExport('csv','tblSubOrders','AccountStatement')"
+              >CSV</a
+            >
+          </li>
+          <li data-type="excel">
+            <a onclick="tExport('excel','tblSubOrders','AccountStatement')"
+              >MS-Excel</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget-body">
+      <div class="rptPreloader" style="display: none">
+        <img src="./assets/img/squares.gif" alt="loading..." />
+      </div>
+      <div class="table-responsive" id="no-more-tables-inner">
+        <table
+          id="tblSubOrders"
+          class="table table table-bordered table-hover table-striped"
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Selection</th>
+              <th>Runner Name</th>
+              <th>Side</th>
+              <th>Price</th>
+              <th>Size</th>
+              <th>Place Date</th>
+              <th>P/L</th>
+              <th>Order Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bet of selectedRow.bets" [ngClass]="bet?.betType == 'back'? 'backRow': 'layRow'">
+              <td data-title="ID">{{bet?.betId}}</td>
+              <td data-title="Selection">{{bet?.selectionId}}</td>
+              <td data-title="Runner Name">{{bet?.selectionName}}</td>
+              <td data-title="Side" class="mbSide">{{bet.betType}}</td>
+              <td data-title="Order Price">{{bet?.odd}}</td>
+              <td data-title="Order Size">{{bet?.stake}} </td>
+              <td data-title="Place Date">{{bet?.betTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+              <td data-title="P/L" class="amnt" [ngClass]="bet.PL >= 0 ? 'positive' : 'negative'">{{bet?.PL | number: '0.2'}} </td>
+              <td data-title="Order Status">{{bet?.status}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+:root {
+    --text-primary: #8d9da8;
+    --text-secondary: #2d3e50;
+    --header-bg: #ffc53d;
+    --secondary-bg: #2C323A;
+    --subhead-bg: #1b2d38;
+    --lightMode:#1A212A;
+    --activeMode:#2C323A;
+    --bodybackground:#000;
+  }

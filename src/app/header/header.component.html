@@ -1,0 +1,159 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-container">
+      <div class="navbar-wrap">
+        <div class="left-section">
+          <div class="navbar-header">
+            <a class="navbar-brand">
+              <small>
+                <i class="collapse-icon fa fa-bars" (click)="toggleSidebar()"></i>
+                <a routerLink="/">
+                  <img src="assets/images/logos/{{siteName}}.png" title="LC Exchange powered by Betfair" alt="LOGO" />
+                </a>
+                <!-- <a class="ferrari hideweb" style="top: 7px;    left: 14%;" routerLink="/">
+          <i class="fas fa-home"></i>
+        </a> -->
+              </small>
+            </a>
+          </div>
+          <div class="sidebar-collapse hideweb">
+            <strong><u> <span>Balance: </span> <span id="ukWallet">{{currentUser?.currencyCode}} <span
+                    style="color: green;">{{balanceData?.balance
+                    | number: '0.2'}}</span> </span></u></strong>
+            <br>
+            <strong><u> <span>Liability: </span> <span id="ukWallet" style="color: red;">{{balanceData?.exposure |
+                  number: '0.2'}}<i id="refresh" class="fa fa-refresh rotate white"
+                    (click)="QuitCasino('click')"></i></span></u></strong> <br>
+            <strong (click)="isDropdownOpen = !isDropdownOpen"><u> <span>My Account: </span> <span id="ukWallet">
+                  {{currentUser?.userName}}<i id="refresh" class="fa fa-caret-down black"></i></span></u></strong>
+
+          </div>
+        </div>
+        <div class="mid-section hidden-sm hidden-xs">
+          <!-- <ng-marquee [speed]="'slow'" style="width:100%">
+            <mark *ngFor="let ticker of tickers">
+              {{ticker.ticker}}
+            </mark>
+            <mark>
+              {{ticker1?.ticker}}
+            </mark>
+          </ng-marquee> -->
+          <marquee> <span *ngFor="let ticker of tickers"> {{ticker.ticker}}</span>
+            <span>&nbsp;&nbsp; {{ticker1?.ticker}}</span>
+          </marquee>
+        </div>
+        <a class="ferrari hideweb" style="top: 45px;    left: 6%;" routerLink="/">
+          <i class="fas fa-home"></i>
+        </a>
+
+        <div class="navbar-header pull-right">
+          <div class="navbar-account">
+            <ul class="account-area">
+              <li>
+                <span class="pull-right" style="color: white; font-weight: bold; vertical-align: middle">
+                  <input style="z-index: -1000" class="checkbox-slider toggle colored-blue" id="chkMute"
+                    type="checkbox" />
+                  <i style="padding-top: 12px; font-size: 18px; display: none" title="Sound is off"
+                    class="fa fa-volume-off" id="iOff"></i>
+                  <i style="padding-top: 12px; font-size: 18px; display: none" title="Sound is on"
+                    class="fa fa-volume-up" id="iOn"></i>
+                </span>
+              </li>
+              <li class="hidemob">
+                <a class="login-area bal">
+                  <strong> <span>Balance: </span> <span id="ukWallet">{{currentUser?.currencyCode}}
+                      {{balanceData?.balance | number: '0.2'}} </span></strong>
+                  <br>
+                  <strong> <span>Liability: </span> <span id="ukWallet">{{balanceData?.exposure | number: '0.2'}}<i
+                        id="refresh" class="fa fa-refresh rotate white"
+                        (click)="QuitCasino('click')"></i></span></strong>
+                </a>
+              </li>
+
+              <li>
+                <a class="login-area dropdown-toggle" (click)="isDropdownOpen = !isDropdownOpen">
+                  <section class="hidemob">
+                    <h2>
+                      <strong>
+                        <u style="color: #000;">
+                          <span>My Account
+                            ({{currentUser?.userName}})
+                          </span>
+                        </u>
+                      </strong>
+
+                    </h2>
+                  </section>
+                </a>
+
+                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area"
+                  [style.display]="isDropdownOpen? 'block': 'none'">
+                  <li>
+                    <a href="javascript: void(0)">
+                      <span id="ClientName" style="font-weight: bold">{{currentUser?.userName}}({{currentUser?.name?
+                        currentUser.name: '-'}})</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a routerLink="/reports/acc-statement" target="_blank">Account Statement</a>
+                  </li>
+                  <li>
+                    <a routerLink="/reports/my-bets" target="_blank">My Bets</a>
+                  </li>
+                  <li>
+                    <a routerLink="/reports/pnl" target="_blank">Profit &amp; Loss</a>
+                  </li>
+                  <li>
+                    <a routerLink="/reports/exch-bets" target="_blank">Exchange Games Report</a>
+                  </li>
+                  <li>
+                    <a routerLink="/changepassword">Change Password</a>
+                  </li>
+                  <li>
+                    <a routerLink="/reports/activities" target="_blank">Activity Log</a>
+                  </li>
+                  <li>
+                    <a style="display: flex;" *ngIf="moonButton">
+                      <p style="margin-right: 25px;">Light / Dark Theme</p>
+                      <input (click)="toggleDarkTheme()" class="tgl tgl-flat" id="cb4" type="checkbox" checked/>
+                      <label class="tgl-btn" for="cb4"></label>
+                    </a>
+                    <a style="display: flex;" *ngIf="sunButton">
+                      <p style="margin-right: 25px;">Light / Dark Theme</p>
+                      <input (click)="removeTheme()" class="tgl tgl-flat" id="cb4" type="checkbox" />
+                      <label class="tgl-btn" for="cb4"></label>
+                    </a>
+                  </li>
+                  <li class="dropdown-footer">
+                    <a id="lblLogout" style="cursor: pointer;" (click)="logout()">Logout</a>
+                    <!-- <a
+                        id="lblLogout"
+                        href="javascript:__doPostBack(&#39;ctl00$lblLogout&#39;,&#39;&#39;)"
+                        >Logout</a
+                      > -->
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div *ngIf="tickers && tickers.length || ticker1" class="hidden-md hidden-lg">
+  <ng-marquee>
+    <mark *ngFor="let ticker of tickers">
+      {{ticker.ticker}}
+    </mark>
+    <mark>
+      {{ticker1?.ticker}}
+    </mark>
+  </ng-marquee>
+</div> -->
+
+<!-- <button *ngIf="moonButton" class="button -icon my-markets-button" (click)="toggleDarkTheme()"><i
+    class="fa fa-solid fa-sun"></i>
+  </button>
+<button *ngIf="sunButton" class="buttons -icon my-markets-button" (click)="removeTheme()"><i
+    class="fa fa-solid fa-moon"></i></button> -->

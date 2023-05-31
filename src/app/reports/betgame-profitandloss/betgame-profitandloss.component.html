@@ -1,0 +1,199 @@
+<h2>Betgames Bets</h2>
+<ul class="tab col3">
+    <li class="detail "><a class="bankbtn" routerLink="/reports/betgame_bettinghistory">Betgames Bets History</a></li>
+
+    <li class="detail select"><a class="upibtn" routerLink="/reports/betgame_profitandloss">Betgames Profit &amp; Loss</a></li>
+</ul>
+<!-- <ul class="report-tab-wrap" style="display: block;">
+    <li id="reportType_exchange" class="report-tab"> ALL </li>
+</ul> -->
+
+<div class="row">
+    <div class="col-lg-3 col-sm-3">
+        <div class="form-group">
+            <label>Period</label>
+            <div class="input-group">
+                <input type="text" placeholder="from" class="form-control" bsDatepicker [minDate]="month"
+                    [maxDate]="toDate" [(bsValue)]="fromDate" [bsConfig]="{
+                  dateInputFormat: 'DD-MM-Y HH:mm:ss',
+                  containerClass: 'theme-blue'
+                }" />
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+            <!-- second date -->
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-3">
+        <div class="form-group">
+            <label> to</label>
+            <div class="input-group">
+                <input type="text" placeholder="to" class="form-control" bsDatepicker [minDate]="fromDate"
+                    [maxDate]="today" [(bsValue)]="toDate" [bsConfig]="{
+                  dateInputFormat: 'DD-MM-Y HH:mm:ss',
+                  containerClass: 'theme-blue'
+                }" />
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+
+        </div>
+    </div>
+    <div class="date-cls">
+        <div class="col-lg-2 col-sm-2 col-xl-2">
+            <div class="form-group">
+                <label></label>
+                <div class="input-group">
+                    <a id="today" (click)="selectTab('today')" class="btn">Just For Today</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-2 col-sm-2 ">
+            <div class="form-group">
+                <label></label>
+                <div class="input-group">
+                    <a id="yesterday" (click)="selectTab('yesterday')" class="btn">From Yesterday</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-2">
+        <div class="form-group">
+            <label></label><br>
+            <button value="Load Report" class="btn btn-blue btn-sub">
+                <a id="getPL" class="btn-send" (click)="GetProfitLoss()">Get P &amp; L</a>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<!-- <div class="function-wrap">
+ 
+    <ul class="input-list">
+        <li><a id="today" (click)="selectTab('today')" class="btn">Just For Today</a></li>
+        <li><a id="yesterday" (click)="selectTab('yesterday')" class="btn">From Yesterday</a></li>
+        <li style="display: none;"><a id="last7days" (click)="selectTab('last7days')" class="btn">Last 7 days</a>
+        </li>
+        <li style="display: none;"><a id="last30days" (click)="selectTab('last30days')" class="btn">Last 30 days</a>
+        </li>
+        <li style="display: none;"><a id="last2months" (click)="selectTab('last2months')" class="btn">Last 2
+                Months</a></li>
+        <li style="display: none;"><a id="last3months" (click)="selectTab('last3months')" class="btn">Last 3
+                Months</a></li>
+        <li><a id="getPL" class="btn-send" (click)="GetProfitLoss()">Get P &amp; L</a></li>
+    </ul>
+</div> -->
+
+<div id="report" *ngIf="ProfitLoss.length>0">
+    <ul id="spotsUl" class="total-show">
+        <li id="totalPL">Total P/L: {{userInfo?.currencyCode}} <span
+                [ngClass]="{'win':totalPnl>0,'lose':totalPnl<0}">{{totalPnl | number:'1.2-2'}}</span></li>
+
+    </ul>
+    <ul id="binaryPL" class="total-show" style="display: none;">
+        <li id="binaryTotalPL"></li>
+    </ul>
+    <table id="reportTable" class="table table table-bordered table-hover table-striped" style="display: table;">
+        <tbody>
+            <tr>
+                <th width="" class="align-L">Market </th>
+                <th width="15%">Start Time </th>
+                <th width="15%">Settled date </th>
+                <th width="18%">Profit/Loss </th>
+            </tr>
+            <ng-container *ngFor="let pnl of ProfitLoss;let index=index">
+                <tr id="summary{{index}}" style="display: table-row;">
+                    <td id="title" class="align-L">{{pnl.sportName}}
+                        <img class="fromto" src="assets/images/transparent.gif">
+                        <strong>{{pnl.eventName}}</strong>
+
+                    </td>
+                    <td id="startTime">{{pnl.startTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td id="settledDate">{{pnl.settledDate | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td>
+                        <a id="pl0"
+                            [ngClass]="{'expand-open':srNo==index,'expand-close':srNo!=index,'win':pnl.netPL>0,'lose':pnl.netPL<0}"
+                            (click)="srNo==index?toggleDetail(null):toggleDetail(index)"
+                            href="javascript: void(0);">{{pnl.netPL | number:'1.2-2'}}</a>
+                    </td>
+                </tr>
+                <tr id="detail{{index}}" class="expand" style="display: table-row;" *ngIf="srNo==index">
+                    <td colspan="4">
+                        <img class="expand-arrow-R" src="assets/images/transparent.gif">
+
+                        <table class="table-commission">
+                            <tbody>
+                                <tr>
+                                    <th width="14%">Bet ID
+                                    </th>
+                                    <th width="">Selection
+                                    </th>
+                                    <th width="9%">Odds
+                                    </th>
+                                    <th width="13%">Stake
+                                    </th>
+                                    <!-- <th width="8%">Type
+                                    </th> -->
+                                    <th width="16%">Placed
+                                    </th>
+                                    <th width="23%">Profit/Loss
+                                    </th>
+                                </tr>
+                                <ng-container
+                                    *ngFor="let bet of pnl.bets;let index2=index;let isOdd=odd;let isEven=even">
+                                    <tr id="txRow{{index2}}" style="display: table-row;"
+                                        [ngClass]="{'odd':isOdd,'even':isEven}">
+                                        <td id="betID">{{bet.betId}}</td>
+                                        <td id="matchSelection">{{bet.selection}}</td>
+                                        <td id="txOddsMatched">{{bet.odds}}</td>
+                                        <td id="txStake">{{bet.stake | number:'1.2-2'}}</td>
+                                        <!-- <td><span id="matchType" class="{{bet.betType}}">{{bet.betType}}</span>
+                                        </td> -->
+                                        <td id="placed">{{bet.betTime | date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+                                        <td id="txLiability">{{bet.netPl | number:'1.2-2'}}</td>
+                                    </tr>
+                                </ng-container>
+                                <tr class="sum-pl">
+                                    <td colspan="7">
+
+                                        <dl>
+                                            <dt>Total Stakes</dt>
+                                            <dd id="totalStakes">{{pnl.totalStakes | number:'1.2-2'}}</dd>
+
+                                            <dt id="backSubTotalTitle">Yes subtotal</dt>
+                                            <dd id="backSubTotal">{{pnl.backTotal | number:'1.2-2'}}</dd>
+
+                                            <dt id="laySubTotalTitle">No subtotal</dt>
+                                            <dd id="laySubTotal">{{pnl.layTotal | number:'1.2-2'}}</dd>
+
+                                            <dt>Market subtotal</dt>
+                                            <dd id="marketTotal">{{pnl.mktPnl | number:'1.2-2'}}</dd>
+
+                                            <dt id="commissionTitle" style="display: none;">Rebate</dt>
+                                            <dd id="commission">{{pnl.commission | number:'1.2-2'}}</dd>
+
+                                            <dt class="net_total">Net Market Total</dt>
+                                            <dd id="netTotal" class="net_total">{{pnl.netPL | number:'1.2-2'}}</dd>
+                                        </dl>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+            </ng-container>
+
+        </tbody>
+    </table>
+</div>
+
+<div id="noReportMessage" *ngIf="ProfitLoss.length==0 && !loader">
+    <p>Betting History enables you to review the bets you have placed. <br>Specify the time period during which your
+        bets were placed, the type of markets on
+        which the bets were placed, and the sport.</p>
+    <p>Betting History is available online for the past 30 days.</p>
+</div>

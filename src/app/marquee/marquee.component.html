@@ -1,0 +1,20 @@
+<div class="marquee-box">
+  <h4>News</h4>
+  <div class="marquee">
+    <div class="js-marquee-wrapper">
+      <div *ngIf="tickers && tickers.length || ticker1" class="hidden-md hidden-lg">
+        <!-- <ng-marquee>
+          <mark *ngFor="let ticker of tickers">
+            {{ticker.ticker}}
+          </mark>
+          <mark>
+            {{ticker1?.ticker}}
+          </mark>
+        </ng-marquee> -->
+        <marquee> <span *ngFor="let ticker of tickers"> {{ticker.ticker}}</span>
+          <span> &nbsp;&nbsp; {{ticker1?.ticker}}</span>
+        </marquee>
+      </div>
+    </div>
+  </div>
+</div>

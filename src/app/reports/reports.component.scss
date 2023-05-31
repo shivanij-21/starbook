@@ -1,0 +1,306 @@
+.page-sidebar .sidebar-menu {
+  li {
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    position: relative;
+  }
+
+  a {
+    display: block;
+    height: 38px;
+    cursor: pointer;
+    line-height: 36px;
+    margin: 0;
+    padding: 0 16px 0 7px;
+    -webkit-text-shadow: none !important;
+    text-shadow: none !important;
+    font-size: 13px;
+    text-decoration: none;
+    color: #737373;
+    z-index: 123;
+  }
+}
+
+::ng-deep {
+  @media only screen and (max-width: 800px) {
+    /* Force table to not be like tables anymore */
+    #no-more-tables table,
+    #no-more-tables thead,
+    #no-more-tables tbody,
+    #no-more-tables th,
+    #no-more-tables td,
+    #no-more-tables tr {
+      display: block;
+    }
+
+    #no-more-tables-inner table,
+    #no-more-tables-inner thead,
+    #no-more-tables-inner tbody,
+    #no-more-tables-inner th,
+    #no-more-tables-inner td,
+    #no-more-tables-inner tr {
+      display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    #no-more-tables thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    #no-more-tables-inner thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    #no-more-tables tr {
+      border: 1px solid #ccc;
+    }
+
+    #no-more-tables td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+      text-align: left;
+    }
+
+    #no-more-tables td:before {
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    /*
+  Label the data
+  */
+    #no-more-tables td:before {
+      content: attr(data-title);
+      border-right: 1px solid #eee;
+    }
+
+    #no-more-tables-inner tr {
+      border: 1px solid #ccc;
+    }
+
+    #no-more-tables-inner td {
+      /* Behave  like a "row" */
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+      white-space: normal;
+      text-align: left;
+    }
+
+    #no-more-tables-inner td:before {
+      /* Now like a table header */
+      position: absolute;
+      /* Top/left values mimic padding */
+      top: 6px;
+      left: 6px;
+      width: 45%;
+      padding-right: 10px;
+      white-space: nowrap;
+      text-align: left;
+      font-weight: bold;
+    }
+
+    /*
+  Label the data
+  */
+    #no-more-tables-inner td:before {
+      content: attr(data-title);
+      border-right: 1px solid #eee;
+    }
+  }
+
+  // @media only screen and (max-width: 880px) {
+  //   .page-sidebar {
+  //     display: none;
+  //     float: none;
+  //   }
+  // }
+}
+
+.tgl {
+  display: none;
+}
+.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+  box-sizing: border-box;
+}
+.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+  background: none;
+}
+.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+  background: none;
+}
+.tgl + .tgl-btn {
+  outline: 0;
+  display: block;
+  width: 3.5em;
+  height: 1.8em;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+  position: relative;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
+}
+.tgl + .tgl-btn:after {
+  left: 0;
+}
+.tgl + .tgl-btn:before {
+  display: none;
+}
+.tgl:checked + .tgl-btn:after {
+  left: 50%;
+}
+
+.tgl-light + .tgl-btn {
+  background: #eee;
+  border-radius: 2em;
+  padding: 2px;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  border: 1px solid #ddd;
+}
+.tgl-light + .tgl-btn:after {
+  border-radius: 50px;
+  background: #fff;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
+.tgl-light:checked + .tgl-btn {
+  background: #BDBEC2;
+}
+
+.tgl-ios + .tgl-btn {
+  background: #eee;
+  border-radius: 2em;
+  padding: 2px;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  border: 1px solid #ddd;
+}
+.tgl-ios + .tgl-btn:after {
+  border-radius: 2em;
+  background: #fbfbfb;
+  -webkit-transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+  transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 rgba(0, 0, 0, 0.08);
+}
+.tgl-ios + .tgl-btn:hover:after {
+  will-change: padding;
+}
+.tgl-ios + .tgl-btn:active {
+  box-shadow: inset 0 0 0 2em #e8eae9;
+}
+.tgl-ios + .tgl-btn:active:after {
+  padding-right: .8em;
+}
+.tgl-ios:checked + .tgl-btn {
+  background-color:#4A4A4A;
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#4A4A4A, endColorstr=#2B2B2B);
+ background-image:-moz-linear-gradient(top, #4A4A4A 0%, #2B2B2B 100%);
+ background-image:-webkit-linear-gradient(top, #4A4A4A 0%, #2B2B2B 100%);
+ background-image:-ms-linear-gradient(top, #4A4A4A 0%, #2B2B2B 100%);
+ background-image:linear-gradient(top, #4A4A4A 0%, #2B2B2B 100%);
+ background-image:-o-linear-gradient(top, #4A4A4A 0%, #2B2B2B 100%);
+ background-image:-webkit-gradient(linear, right top, right bottom, color-stop(0%,#4A4A4A), color-stop(100%,#2B2B2B));}
+.tgl-ios:checked + .tgl-btn:active {
+  box-shadow: none;
+}
+.tgl-ios:checked + .tgl-btn:active:after {
+  margin-left: -.8em;
+}
+
+.tgl-flat + .tgl-btn {
+  padding: 2px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  background: #fff;
+  border: 2px solid #1F1F21;
+  border-radius: 2em;
+}
+.tgl-flat + .tgl-btn:after {
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  background: #1F1F21;
+  content: "";
+  border-radius: 1em;
+}
+.tgl-flat:checked + .tgl-btn {
+  border: 2px solid #1F1F21;
+}
+.tgl-flat:checked + .tgl-btn:after {
+  left: 50%;
+  background: #1F1F21;
+}
+
+
+.button.-icon {
+  padding: 0;
+}
+.button.my-markets-button {
+  position: absolute;
+  background: #233239;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  white-space: normal;
+  line-height: 20px;
+  font-size: 22px;
+  right: 12px;
+  bottom: 40px;
+  border: 1px solid transparent;
+  z-index: 9999;
+}
+
+.fa-moon:before {
+  content: "\f186";
+  font-size: 25px;
+}
+
+.buttons.-icon {
+  padding: 0;
+}
+.buttons.my-markets-button {
+  position: absolute;
+  background: #ffc53d;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  white-space: normal;
+  line-height: 20px;
+  font-size: 22px;
+  right: 12px;
+  bottom: 40px;
+  border: 1px solid transparent;
+  z-index: 9999;
+}
+.fa-sun:before {
+  content: "\f185";
+  font-size: 25px;
+  color: white;
+
+}

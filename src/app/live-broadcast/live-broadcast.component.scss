@@ -1,0 +1,115 @@
+::ng-deep {
+  .spaced.panel-group .panel + .panel {
+    margin-top: 3px;
+  }
+
+  .panel-group {
+    border: 1px solid #d8d8d8;
+    border-top-width: 0;
+  }
+
+  .panel-group .panel {
+    border-radius: 0;
+    border: 0;
+    background-color: var(--secondary-bg);
+    box-shadow: none;
+  }
+
+  .panel-group .panel:last-child {
+    border-bottom-width: 1px;
+  }
+
+  .panel-group .panel .collapse {
+    background-color: var(--secondary-bg);
+  }
+
+  .panel-group .panel + .panel {
+    margin-top: 0;
+  }
+
+  .panel-group .panel-heading {
+    padding: 0;
+  }
+
+  .panel-group .panel-heading + .panel-collapse .panel-body {
+    border-top-color: #d5d5d5 !important;
+  }
+
+  .panel-group .panel-heading .accordion-toggle {
+    color: #555;
+    background-color: var(--secondary-bg);
+    position: relative;
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 1;
+    padding: 10px;
+    display: block;
+  }
+
+  .panel-group .panel-heading .accordion-toggle:after {
+    transition: all 0.218s;
+    position: absolute;
+    right: 20px;
+    top: 8px;
+    font-family: "FontAwesome";
+    font-size: 17px;
+    font-weight: bold;
+    content: "";
+    color: #bebebe;
+  }
+
+  .panel-group .panel-heading .accordion-toggle.collapsed:after {
+    content: "";
+  }
+
+  .panel-group .panel-heading .accordion-toggle.collapsed {
+    color: #737373;
+    font-weight: normal;
+    background-color: var(--secondary-bg);
+    transition: border 0.218s;
+    border-bottom: 1px solid #f5f5f5;
+  }
+
+  .panel-group .panel-heading .accordion-toggle:hover {
+    color: #262626;
+    text-decoration: none;
+  }
+
+  .panel-group
+    .panel-heading
+    .accordion-toggle:hover
+    > [class*="icon-"]:first-child {
+    text-decoration: none;
+  }
+
+  .panel-group .panel-heading .accordion-toggle:hover:after {
+    color: #262626;
+  }
+
+  .panel-group .panel-heading .accordion-toggle:focus,
+  .panel-group .panel-heading .accordion-toggle:active {
+    outline: 0;
+    text-decoration: none;
+  }
+
+  .panel-group
+    .panel-heading
+    .accordion-toggle
+    > [class*="fa-"]:first-child {
+    width: 16px;
+  }
+
+  .panel-group .panel-body {
+    // background-color: #eee;
+    border-left: 2px solid #eee;
+    color: #262626 !important;
+  }
+
+  .panel-group.no-padding {
+    padding: 0;
+  }
+}
+
+.isPadding{
+  padding: 2px !important;
+}

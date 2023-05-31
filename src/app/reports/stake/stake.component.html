@@ -1,0 +1,51 @@
+<div id="MasterContentPlaceHolder_UpdatePanel1">
+  <span class="lable label-success" *ngIf="result=='success'">
+    Successfully Updated
+  </span>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Stake</th>
+      <th>Button Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let stake of stakeList; let $index = index">
+      <th scope="row">Button {{ $index + 1 }}</th>
+      <td>
+        <input
+          type="number"
+          id="stake{{ $index }}"
+          class="form-control"
+          maxlength="7"
+          data-min="0"
+          onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+          [(ngModel)]="stake.stake"
+        />
+
+        <!-- <span id="MasterContentPlaceHolder_rng1" style="visibility: hidden"
+          >Value must be between 20 and 100000</span
+        > -->
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input
+          type="button"
+          name="ctl00$MasterContentPlaceHolder$btnSave"
+          value="Update Stake"
+          (click)="editStakeSettings()"
+          id="MasterContentPlaceHolder_btnSave"
+          class="btn btn-active form-control"
+        />
+      </td>
+      <td>
+        <span
+          id="MasterContentPlaceHolder_lblInfo"
+          class="label label-success"
+        ></span>
+      </td>
+    </tr>
+  </tbody>
+</table>

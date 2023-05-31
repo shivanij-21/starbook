@@ -1,0 +1,33 @@
+.round-container .round {
+  display: inline;
+}
+
+.runner-name > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: '800px') {
+  .runner-name > div {
+    flex-flow: column;
+  }
+}
+
+.spSelection {
+  margin-left: 4px;
+}
+
+.main{
+  background-color: #dbdbdb;
+  font-size: 13px;
+  width: 100%;
+}
+
+.card-counter-label{
+  margin: 0 5px 1px;
+}
+
+.count{
+  margin: 4px 5px 5px;
+  width: 97%; 
+}

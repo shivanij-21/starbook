@@ -1,0 +1,144 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-container">
+      <div class="navbar-header pull-left">
+        <a routerLink="/" class="navbar-brand">
+          <small>
+            <img
+              src="assets/images/logos/{{siteName}}.png"
+              title="LC Exchange powered by Betfair"
+              alt="LOGO"
+            />
+          </small>
+        </a>
+      </div>
+      <div
+        class="sidebar-collapse"
+        *ngIf="!mobileQuery.matches"
+        (click)="toggleSidebar()"
+      >
+        <i class="collapse-icon fa fa-bars"></i>
+      </div>
+      <div class="navbar-header pull-right">
+        <p class="navbar-brand">
+          <label class="label"
+            >Username |
+            <span id="lblCName" class="label">{{
+              currentUser?.userName
+            }}</span></label
+          >
+
+          <label class="label"
+            >Balance |
+            <span id="lblBlnc" class="label">
+              {{currentUser?.currencyCode}}
+              {{
+              balanceData?.balance | number: "0.2"
+            }}</span></label
+          >
+
+          <a style="cursor: pointer; font-size: 18px;" (click)="getBalance()"
+            ><i id="refresh" class="fa fa-refresh rotate white"></i
+          ></a>
+          &nbsp;
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main-container container-fluid">
+  <div class="page-container">
+    <div class="page-sidebar" id="sidebar" [class.hide]="isHide">
+      <ul class="nav sidebar-menu">
+        <li routerLinkActive="active">
+          <a routerLink="/reports/acc-statement">
+            <span class="menu-text">Account Statements </span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/reports/my-bets">
+            <span class="menu-text">Sports Bets </span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active">
+          <a routerLink="/reports/fancy-bets">
+            <span class="menu-text">Fancy Bets</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/exch-bets">
+            <span class="menu-text">Exchange Games Bets </span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/casino-bets">
+            <span class="menu-text">Casino Bets</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/poker-report">
+            <span class="menu-text">Poker reports</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/betgame_bettinghistory">
+            <span class="menu-text">Betgames Betting History</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/sncasino_bets_history">
+            <span class="menu-text">Supernowa Casino Bets  </span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/slot_bet_history">
+            <span class="menu-text">Slots Bets </span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/pnl">
+            <span class="menu-text"> Profit & Loss </span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/stake">
+            <span class="menu-text">My Stack Buttons</span>
+          </a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="/reports/activities">
+            <span class="menu-text">Activity logs</span>
+          </a>
+        </li>
+        
+        <li >
+          <a style="display: flex;padding-top: 7px;" *ngIf="moonButton">
+            <p style="margin-right: 25px;">Light / Dark Theme</p>
+            <input (click)="toggleDarkTheme()" class="tgl tgl-flat" id="cb4" type="checkbox" checked/>
+            <label class="tgl-btn" for="cb4"></label>
+          </a>
+          <a style="display: flex;" *ngIf="sunButton">
+            <p style="margin-right: 25px;">Light / Dark Theme</p>
+            <input (click)="removeTheme()" class="tgl tgl-flat" id="cb4" type="checkbox" />
+            <label class="tgl-btn" for="cb4"></label>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="page-content">
+      <div>
+        <div class="page-body">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <button *ngIf="moonButton" class="button -icon my-markets-button" (click)="toggleDarkTheme()"><i
+  class="fa fa-solid fa-sun"></i></button>
+<button   *ngIf="sunButton"  class="buttons -icon my-markets-button" (click)="removeTheme()"><i
+  class="fa fa-solid fa-moon"></i></button> -->

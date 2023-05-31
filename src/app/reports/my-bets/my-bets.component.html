@@ -1,0 +1,184 @@
+<div class="row">
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>Order Type</label>
+      <select
+        name="ctl00$MasterContentPlaceHolder$lstorders"
+        id="MasterContentPlaceHolder_lstorders"
+        class="form-control dropdown-toggle"
+        [(ngModel)]="selectedBetStatus"
+      >
+        <option *ngFor="let betStatus of betStatusList" [ngValue]="betStatus">
+          {{ betStatus.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>Start Date</label>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="from"
+          class="form-control"
+          bsDatepicker
+          [minDate]="month"
+          [maxDate]="toDate"
+          [(bsValue)]="fromDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>End Date</label>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="to"
+          class="form-control"
+          bsDatepicker
+          [minDate]="fromDate"
+          [maxDate]="toDate"
+          [(bsValue)]="toDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>&nbsp;</label><br />
+      <button
+        (click)="getBetHistory()"
+        value="Load Report"
+        class="btn btn-blue"
+      >
+        Load Report
+      </button>
+    </div>
+  </div>
+</div>
+<div class="widget">
+  <div class="widget-header">
+    <!-- <div class="btn-group pull-left">
+      <button
+        aria-expanded="false"
+        class="btn btn-default dropdown-toggle"
+        data-toggle="dropdown"
+        type="button"
+      >
+        <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li data-type="xml">
+          <a onclick=" tExport('xml', 'tblMyBets', 'My Bets') ">XML</a>
+        </li>
+        <li data-type="csv">
+          <a onclick=" tExport('csv', 'tblMyBets', 'My Bets') ">CSV</a>
+        </li>
+        <li data-type="excel">
+          <a onclick=" tExport('excel', 'tblMyBets', 'My Bets') ">MS-Excel</a>
+        </li>
+      </ul>
+    </div> -->
+    <div class="btn-group pull-left" dropdown>
+      <button
+        id="button-basic"
+        dropdownToggle
+        type="button"
+        class="btn dropdown-toggle"
+        aria-controls="dropdown-basic"
+      >
+        <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+      </button>
+      <ul
+        id="dropdown-basic"
+        *dropdownMenu
+        class="dropdown-menu"
+        role="menu"
+        aria-labelledby="button-basic"
+      >
+        <li role="menuitem">
+          <a class="dropdown-item" [appExportData]="'tblMyBets'" [type]="'xml'"
+            >XML</a
+          >
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" [appExportData]="'tblMyBets'" [type]="'csv'"
+            >CSV</a
+          >
+        </li>
+        <li role="menuitem">
+          <a class="dropdown-item" [appExportData]="'tblMyBets'" [type]="'xls'"
+            >MS-Excel</a
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="pull-left" style="margin-top: 10px">
+      <strong> Sports Bets</strong>
+    </div>
+  </div>
+  <div class="widget-body">
+    <div class="table-responsive" id="no-more-tables">
+      <table id="tblMyBets" class="table table-condensed table table-bordered">
+        <thead>
+          <tr>
+            <th>Market Name</th>
+            <th>ID</th>
+            <th>Match ID</th>
+            <th>Runner Name</th>
+            <th>Side</th>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Placed Date</th>
+            <th>IP Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            [ngClass]="bet.betType === 'back' ? 'backRow' : 'layRow'"
+            *ngFor="let bet of betHistory"
+          >
+            <td data-title="Market Name">
+              {{ bet.sportName | titlecase }}/{{ bet.eventName }}/
+              {{ bet.marketName }}
+            </td>
+            <td data-title="Bet ID">{{ bet.betId }}</td>
+            <td data-title="Selection ID">23213</td>
+            <td data-title="Runner Name">{{ bet.selName }}</td>
+            <td data-title="Side" class="mbSide">
+              {{ bet.betType | uppercase }}
+            </td>
+            <td data-title="Order Price">{{ bet.odds }}</td>
+            <td data-title="Order Size">{{ bet.stake | number: "0.2" }}</td>
+            <td data-title="Placed Date">
+              {{ bet.betTime | date: "dd/MM/yyy HH:mm:ss aa" }}
+            </td>
+            <td data-title="IP Address">
+              <span [id]="bet.betId" style="display: none;">{{bet.ip}} </span>
+              <button class="btn btn-info" (click)="showIp($event, bet.betId)">
+                Show IP-Address
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

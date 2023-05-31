@@ -1,0 +1,47 @@
+<div role="main" class="right_col">
+    <div class="wrapper mt-2 diamond-casino-container">
+        <div class="card">
+            <div class="row mt-2">
+                <div class="col-md-12" style="    width: 100%;padding: 0;">
+                    <h4 class="casino-title mb-0">
+                        <div class="arrows-left arrows"><span></span></div>
+                        SUPERNOVA<div class="arrows-right arrows"><span></span></div>
+                    </h4>
+                </div>
+                <ul data-tabs="tabs" id="tabs" class="nav nav-tabs nav-justified">
+                    <!-- <a (click)="scrollLeft()" class="arrow-tabs arrow-left"><i class="fas fa-chevron-left"></i></a> -->
+
+                    <li *ngFor="let pro of providerList" [ngClass]="pro.providerCode == providerCode?'active':'null'">
+                        <a routerLink="/supernova/{{pro.providerCode}}">
+                            <img height="30"
+                                src="assets/images/supernowa/{{pro.providerCode}}.png">{{pro.providerName}}</a>
+                    </li>
+                    <!-- <a (click)="scrollRight()" class="arrow-tabs arrow-right"><i class="fas fa-chevron-right"></i></a> -->
+
+                </ul>
+                <div class="col-md-12" style="padding-top: 10px;">
+                    <div class="col-md-2 col-xs-6 inner-img" *ngFor="let casino of SNcasinoList">
+                        <div class="casino-box casinoicons">
+                            <a *ngIf="casino.providerCode !== 'XPG'"
+                                routerLink="/supernova-game/{{casino.providerCode}}/{{casino.code}}">
+                                <div class="casino-icons"><img class="img-fluid" [src]="casino.thumb"></div>
+                                <!-- <div class="casino-name">{{casino.name}}</div> -->
+                                <dl  class="entrance-title">
+                                    <dt >{{casino.name}}</dt>
+                                    <dd >PLay Now</dd>
+                                  </dl>
+                            </a>
+                            <a *ngIf="casino.providerCode == 'XPG'" (click)="casino.providerCode == 'XPG' ? openExtLobby(casino):''">
+                                <div class="casino-icons"><img class="img-fluid" [src]="casino.thumb"></div>
+                                <!-- <div class="casino-name">{{casino.name}}</div> -->
+                                <dl  class="entrance-title">
+                                    <dt >{{casino.name}}</dt>
+                                    <dd >PLay Now</dd>
+                                  </dl>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

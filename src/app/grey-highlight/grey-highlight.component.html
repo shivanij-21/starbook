@@ -1,0 +1,94 @@
+<div class="widget">
+    <ng-container *ngIf="greyhoundRaces">
+    <div class="widget-header">
+        <span class="widget-caption carbon" style="display: flex; align-items: center"><span
+                class="icn-colorfull icn-colorfull-horse"></span><span style="margin-left: 5px"><strong>Today's
+                    Greyhound Racing Card</strong></span></span>
+    </div>
+    <ul class="nav nav-tabs">
+        <li *ngIf="greyLoading">
+            <img style="height: 28px" src="assets/images/Spin-1.3s-55px.gif" alt="" srcset="" />
+        </li>
+        <li *ngFor="let tour of greyhoundRaces" [class.active]="selectedTourGreyhound?.id == tour.id">
+            <a (click)="selectItemGreyhound(tour)">
+                <span [class]="tour.name"></span>
+                <span style="width: 50px; margin-left: 24px">{{
+                    tour.name
+                    }}</span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" *ngIf="selectedTourGreyhound">
+        <div class="tab-pane fade in" [id]="selectedTourGreyhound.name" [class.active]="selectedTourGreyhound">
+            <div *ngFor="let venue of venuesGrey" class="race-card-wrapper" style="padding: 0px 0px 0px 10px">
+                <div class="race-card-meeting">
+                    <span>{{ venue.name }} </span>
+                </div>
+                <div class="race-card-races">
+                    <ul>
+                        <li *ngFor="let market of venue.markets">
+                            <a [routerLink]="[
+                    '/full-market',
+                    4339.1,
+                    selectedTourGreyhound.id,
+                    venue.id,
+                    market.bfId
+                  ]" [queryParams]="{ o: true }">{{ market.startTime | date: "HH:mm" }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- <ng-container *ngIf="nextgreyhoundRaces">
+    <div class="widget-header">
+        <span class="widget-caption carbon" style="display: flex; align-items: center"><span
+                class="icn-colorfull icn-colorfull-horse"></span><span style="margin-left: 5px"><strong>Tommorrow's
+                    Greyhound Racing Card</strong></span></span>
+    </div>
+    <ul class="nav nav-tabs">
+        <li *ngIf="greyLoading">
+            <img style="height: 28px" src="assets/images/Spin-1.3s-55px.gif" alt="" srcset="" />
+        </li>
+        <li *ngFor="let tour of nextgreyhoundRaces" [class.active]="selectedTourGreyhound?.id == tour.id">
+            <a (click)="selectItemGreyhound(tour)">
+                <span [class]="tour.name"></span>
+                <span style="width: 50px; margin-left: 24px">{{
+                    tour.name
+                    }}</span>
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content" *ngIf="selectedTourGreyhound">
+        <div class="tab-pane fade in" [id]="selectedTourGreyhound.name" [class.active]="selectedTourGreyhound">
+            <div *ngFor="let venue of venuesGrey" class="race-card-wrapper" style="padding: 0px 0px 0px 10px">
+                <div class="race-card-meeting">
+                    <span>{{ venue.name }} </span>
+                </div>
+                <div class="race-card-races">
+                    <ul>
+                        <li *ngFor="let market of venue.markets">
+                            <a [routerLink]="[
+                    '/full-market',
+                    4339.2,
+                    selectedTourGreyhound.id,
+                    venue.id,
+                    market.bfId
+                  ]" [queryParams]="{ o: true }">{{ market.startTime | date: "HH:mm" }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container> -->
+</div>
+<table cellspacing="2" class="marketview-main" border="0" id="tblCricket" *ngIf="Highlightlist?.length == 0">
+    <tbody>
+        <tr>
+            <td><br />No match found!</td>
+        </tr>
+    </tbody>
+</table>

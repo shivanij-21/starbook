@@ -1,0 +1,317 @@
+<!-- <audio id="player" #audioOption autobuffer="" allow="autoplay" loop="true" preload="auto" src="assets/audio/ipl_tone.mp3" muted></audio> -->
+<!-- <audio id="player" #audioOption autobuffer="" allow="autoplay" loop="true" preload="auto" muted>
+  <source src="assets/audio/ipl_tone.mp3" type="audio/mp3">
+</audio> -->
+<form autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="scene">
+    <div data-offset="90" class="clouds parallex"></div>
+  </div>
+  <div style="display: none" id="alert">
+    <i class="fa-fw fa fa-warning"></i>
+    <strong> <span id="imsg"></span> </strong>
+  </div>
+  <!-- <div class="login-container animated fadeInDown">
+    <div class="loginbox bg-snow">
+      <div class="loginbox-title">
+        <img src="assets/images/LCExchLogo.png" alt="LOGO" />
+      </div>
+      <div class="loginbox-textbox">
+        <input
+          name="txtUserName"
+          type="text"
+          autocomplete="off"
+          id="txtUserName"
+          formControlName="userName"
+          class="form-control"
+          placeholder="User Name"
+          required=""
+          autofocus=""
+          autocomplete="off"
+        />
+        <span id="ctl01" class="text-danger" style="visibility: hidden"
+          >The user name field is required.</span
+        >
+      </div>
+      <div class="loginbox-textbox">
+        <div class="input-group">
+          <input
+            name="txtPassword"
+            autocomplete="off"
+            id="txtPassword"
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            formControlName="password"
+            class="form-control pwd"
+            aria-describedby="basic-addon2"
+            placeholder="Password"
+            autocomplete="off"
+            required=""
+          />
+          <span
+            style="cursor: pointer"
+            id="togglepassword"
+            class="input-group-addon"
+            (click)="togglePass()"
+            id="basic-addon2"
+            ><i
+              class="fa"
+              [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
+            ></i
+          ></span>
+        </div>
+        <span id="ctl02" class="text-danger" style="visibility: hidden"
+          >The password field is required.</span
+        >
+        <input
+          name="TextBox1"
+          value="ddfkjfkdjfkdfjdkfjkdjfkdjfkjkf"
+          id="TextBox1"
+          type="password"
+          class="form-control hidden"
+          placeholder="Password"
+          required=""
+        />
+        <input
+          name="zone"
+          value="ddfkjfkdjfkdfjdkfjkdjfkdjfkjkf"
+          id="zone"
+          type="password"
+          class="form-control hidden"
+          placeholder="Password"
+          required=""
+        />
+      </div>
+      <div class="loginbox-textbox captcha-box input-group">
+        <input
+          id="validCode"
+          type="text"
+          placeholder="Validation"
+          formControlName="captcha"
+          class="form-control ng-pristine ng-untouched ng-valid ng-empty ng-valid-maxlength"
+          maxlength="4"
+        />
+        <span class="input-group-addon">
+          <img id="authenticateImage" alt="" />
+        </span>
+      </div>
+
+      <div class="loginbox-forgot">
+        Forgot
+        <a class="primary" href="#"> Password?</a>
+      </div>
+
+      <div class="loginbox-submit">
+        <input
+          type="submit"
+          name="btnLogin"
+          id="btnLogin"
+          class="btn btn-primary btn-block"
+        />
+      </div>
+
+      <div style="text-align: center; padding-top: 10px">
+        <div id="ctl03">
+          <span
+            id="msg"
+            class="aspNespanisabled label"
+            [ngClass]="
+              loginStatus?.errorCode === 0 ? 'label-success' : 'label-danger'
+            "
+            >{{ loginStatus?.errorDescription }}</span
+          >
+        </div>
+      </div>
+      <div
+        class=""
+        style="display: flex; justify-content: space-between; padding: 8px 12px"
+      >
+        <div>
+          <i class="glyphicon glyphicon-phone-alt"></i>
+          (0044) 1233-528055
+        </div>
+        <div>
+          <i class="glyphicon glyphicon-envelope"></i>
+          <a
+            href="/cdn-cgi/l/email-protection"
+            class="__cf_email__"
+            data-cfemail="fd94939b92bd8e8e98859e95d39e9290"
+            >[email&#160;protected]</a
+          >
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="root-container">
+    <div class="login-container animated fadeInDown">
+      <!-- <div class="kv" fxHide.lt-md>
+        <div>
+          <img src="assets/images/transparent.gif" alt="Ferrari LcExch" />
+        </div>
+      </div> -->
+      <div>
+        <!-- <div class="kv-mobile" fxHide.gt-sm>
+          <img src="assets/images/transparent.gif" alt="Ferrari LcExch" />
+        </div> -->
+        <div
+          class="loginbox bg-snow"
+        >
+          <div class="loginbox-title">
+            <img
+              src="assets/images/logos/logo11.png"
+              width="220"
+              height="75"
+              alt="LOGO"
+            />
+          </div>
+          <div class="loginbox-textbox">
+            <span class="input-icon icon-right">
+              <input
+                name="txtUserName"
+                type="text"
+                autocomplete="off"
+                id="txtUserName"
+                formControlName="userName"
+                class="form-control"
+                placeholder="User Name"
+                required=""
+                autofocus=""
+                #userName
+              />
+              <i class="fa fa-user"></i>
+            </span>
+            <span
+              id="ctl01"
+              class="text-danger"
+              [style.visibility]="
+                (f.controls['userName'].dirty ||
+                  f.controls['userName'].touched ||
+                  isSubmitted) &&
+                f.controls['userName'].invalid &&
+                f.controls['userName'].errors?.required
+                  ? 'visible'
+                  : 'hidden'
+              "
+              >The user name field is required.</span
+            >
+          </div>
+          <div class="loginbox-textbox">
+            <span class="input-icon icon-right">
+              <input
+                name="txtPassword"
+                autocomplete="off"
+                id="txtPassword"
+                [type]="isPasswordVisible ? 'text' : 'password'"
+                formControlName="password"
+                class="form-control pwd"
+                aria-describedby="basic-addon2"
+                placeholder="Password"
+                required=""
+              />
+
+              <i
+                id="togglepassword"
+                class="fa fa-key"
+                (click)="passVisibleClicked()"
+              ></i>
+            </span>
+            <span
+              id="ctl02"
+              class="text-danger"
+              [style.visibility]="
+                (f.controls['password'].dirty ||
+                  f.controls['password'].touched ||
+                  isSubmitted) &&
+                f.controls['password'].invalid &&
+                f.controls['password'].errors?.required
+                  ? 'visible'
+                  : 'hidden'
+              "
+              >The password field is required.</span
+            >
+          </div>
+          <div class="loginbox-textbox captcha-box" *ngIf="isCaptcha">
+            <span class="input-icon icon-right">
+              <input
+                type="text"
+                autocomplete="off"
+                formControlName="captcha"
+                class="form-control"
+                placeholder="Captcha"
+                required=""
+              />
+              <i>
+                <img id="authenticateImage" alt="" (click)="getImg()" />
+              </i>
+            </span>
+            <span
+              id="ctl02"
+              class="text-danger"
+              [style.visibility]="
+                (f.controls['captcha'].dirty ||
+                  f.controls['captcha'].touched ||
+                  isSubmitted) &&
+                f.controls['captcha'].invalid &&
+                f.controls['captcha'].errors?.required
+                  ? 'visible'
+                  : 'hidden'
+              "
+              >The Captcha field is required.</span
+            >
+          </div>
+
+          <div class="loginbox-submit">
+            <button
+              type="submit"
+              name="btnLogin"
+              id="btnLogin"
+              class="btn btn-primary btn-block"
+              #loginButton
+            >
+              Login
+            </button>
+          </div>
+          <div class="last-row">
+            <!-- <div class="loginbox-forgot">
+              Forgot
+              <a href="#">
+                <label class="primary">Password</label>
+                ?</a
+              >
+            </div> -->
+            <!-- <div class="play-pause">
+              <button (click)="toggleSound()">
+                <i
+                  class="fa"
+                  [ngClass]="soundOn ? 'fa-volume-off' : 'fa-volume-up'"
+                ></i>
+              </button>
+            </div> -->
+          </div>
+
+          <div style="text-align: center; padding-top: 10px">
+            <div id="ctl03">
+              <span id="msg" class="aspNetDisabled label label-danger">{{
+                errorMsg
+              }}</span>
+            </div>
+          </div>
+        </div>
+
+        <table
+          class="table table-condensed"
+          style="
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+          "
+        >
+          <tbody>
+            <tr>
+              <td style="text-align: center;">
+                <i style="font-size: 20px; margin-right: 8px;" class="fa fa-envelope"></i>
+                <a href="mailto:info@{{fullSiteName}}">info@{{fullSiteName}}</a> </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</form>

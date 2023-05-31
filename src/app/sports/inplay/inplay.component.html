@@ -1,0 +1,269 @@
+<div id="ctl30">
+  <div id="ctl32" style="display: none" role="status" aria-hidden="true">
+    Loading...
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12">
+      <div class="widget">
+        <div class="widget-header bordered-bottom bordered-sky">
+          <span class="widget-caption"><strong>In-Play Matches</strong></span>
+          <div class="widget-buttons">
+            <!-- <a href="#" data-toggle="collapse">
+              <i class="fa fa-minus"></i>
+            </a> -->
+          </div>
+        </div>
+        <div class="widget-body" *ngIf="inplayListData?.length == 0">
+          <table cellspacing="2" class="marketview-main" border="0">
+            <tbody>
+              <tr>
+                <td>No in-play match found!</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="widget-body" style="padding: 0" *ngIf="inplayListData?.length != 0">
+          <div class="panel-group accordion" id="accordions">
+            <!-- <div class="panel-body border-red">
+              <table class="marketview-main">
+                <tbody>
+                  <tr>
+                    <td>No in-play match found!</td>
+                  </tr>
+                  <tr></tr>
+                </tbody>
+              </table>
+            </div> -->
+            <div class="panel panel-default"
+              *ngFor="let inplay of inplayListData | sortByDate:'matchDate'; trackBy: trackByFn">
+              <div class="panel-heading" style="cursor: pointer"
+                (click)="collapseMap[inplay.bfId] = !collapseMap[inplay.bfId]">
+                <h4 class="panel-title">
+                  <a aria-expanded="false" class="accordion-toggle collapsed">
+                    {{ inplay.name }}
+                  </a>
+                </h4>
+              </div>
+              <div id="{{ inplay.name }}" [collapse]="collapseMap[inplay.bfId]">
+                <div class="panel-body border-red">
+                  <table class="marketview-main" *ngIf="inplay?.inplayData?.length == 0">
+                    <tbody>
+                      <!--<tr>
+                        <td>
+                          <img
+                            src="./assets/css/img/ajax-loader.gif"
+                            id="loading-indicator-cricket"
+                            style="display: none"
+                          />
+                        </td>
+                      </tr> -->
+                      <tr>
+                        <td>No in-play match found!</td>
+                      </tr>
+                      <tr></tr>
+                    </tbody>
+                  </table>
+                  <table class="marketview-main hidemob" *ngIf="inplay?.inplayData?.length">
+                    <tr style="text-align: center; font-weight: bold">
+                      <td></td>
+                      <td colspan="2">1</td>
+                      <td colspan="2">Χ</td>
+                      <td colspan="2">2</td>
+                    </tr>
+                    <tr *ngFor="
+                        let inplayDetails of inplay.inplayData;
+                        let $index = index;
+                        trackBy: trackByFn
+                      ">
+                      <td class="runner-name" style="height: auto; width: 63%; font-weight: bold">
+                        <span>
+                          <i class="fa fa-check-circle inplay-page"></i>
+                          <a [routerLink]="[
+                              '/full-market',
+                              inplayDetails.SportbfId,
+                              inplayDetails.TourbfId,
+                              inplayDetails.matchId,
+                              inplayDetails.bfId
+                            ]">
+                            {{ inplayDetails.matchName }}
+                          </a>
+                        </span>
+                      </td>
+                      <td>
+                        <button class="back">
+                          <a id="back1_{{ $index }}" class="odds" data-ng-side="Back">{{
+                            inplayRunnerData[inplayDetails.matchId]?.runners
+                            ? (inplayRunnerData[inplayDetails.matchId]
+                            ?.runners[0]?.backPrice | number: "0.0-2")
+                            : ""
+                            }}</a>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="lay">
+                          <a id="lay1_{{ $index }}" class="odds" data-ng-side="Lay">{{
+                            inplayRunnerData[inplayDetails.matchId]?.runners
+                            ? (inplayRunnerData[inplayDetails.matchId]
+                            ?.runners[0]?.layPrice | number: "0.0-2")
+                            : ""
+                            }}</a>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="back">
+                          <a data-ng-click="betSlip(inplayDetails.bfId,'back', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName+$index+'back', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName, inplayDetails.matchName, inplayRunnerData[inplayDetails.matchId]?.runners[2].backPrice,inplayDetails.marketId,inplayDetails.matchId,'1',0,0,sportId,inplayDetails.matchBfId)"
+                            id="back3_{{ $index }}" class="odds" data-ng-side="Back">{{
+                            inplayRunnerData[inplayDetails.matchId]?.runners
+                            ? (inplayRunnerData[inplayDetails.matchId]
+                            ?.runners[2]?.backPrice | number: '0.0-2')
+                            : "-"
+                            }}</a>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="lay">
+                          <a data-ng-click="betSlip(inplayDetails.bfId,'lay', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName+$index+'back', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName, inplayDetails.matchName, inplayRunnerData[inplayDetails.matchId]?.runners[2].layPrice,inplayDetails.marketId,inplayDetails.matchId,'1',0,0,sportId,inplayDetails.matchBfId)"
+                            id="lay3_{{ $index }}" class="odds" data-ng-side="Lay">{{
+                            inplayRunnerData[inplayDetails.matchId]?.runners
+                            ? (inplayRunnerData[inplayDetails.matchId]
+                            ?.runners[2]?.layPrice | number: '0.0-2')
+                            : ""
+                            }}</a>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="back">
+                          <a id="back2_{{ $index }}" class="odds" data-ng-side="Back">{{
+                            inplayRunnerData[inplayDetails.matchId]?.runners
+                            ? (inplayRunnerData[inplayDetails.matchId]
+                            ?.runners[1]?.backPrice | number: "0.0-2")
+                            : ""
+                            }}</a>
+                        </button>
+                      </td>
+                      <td>
+                        <button class="lay">
+                          <a id="lay2_{{ $index }}" class="odds" data-ng-side="Lay">{{
+                            inplayRunnerData[inplayDetails.matchId]?.runners
+                            ? (inplayRunnerData[inplayDetails.matchId]
+                            ?.runners[1]?.layPrice | number: "0.0-2")
+                            : ""
+                            }}</a>
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+
+
+
+                  <table class="marketview-main1 hideweb" *ngIf="inplay?.inplayData?.length">
+                    <div class="row row5">
+                      <div class="col-12">
+                        <div class="text-center game-col game-home"><b>1</b></div>
+                        <div class="text-center game-col game-home"><b>X</b></div>
+                        <div class="text-center game-col game-home"><b>2</b></div>
+                      </div>
+                    </div>
+                    <tr *ngFor="
+                      let inplayDetails of inplay.inplayData;
+                      let $index = index;
+                      trackBy: trackByFn
+                    ">
+
+                      <div class="row row5">
+                        <div class="col-8">
+                          <td class="mb-0 game-name">
+                            <span>
+                              <i class="fa fa-check-circle inplay-page"></i>
+                              <a [routerLink]="[
+                            '/full-market',
+                            inplayDetails.SportbfId,
+                            inplayDetails.TourbfId,
+                            inplayDetails.matchId,
+                            inplayDetails.bfId
+                          ]">
+                                {{ inplayDetails.matchName }}
+                              </a>
+                            </span>
+                          </td>
+                        </div>
+                      </div>
+
+                      <div class="row row5">
+                        <div class="col-8">
+                          <td class="dflex">
+                            <button class="back">
+                              <a id="back1_{{ $index }}" class="odds" data-ng-side="Back">{{
+                                inplayRunnerData[inplayDetails.matchId]?.runners
+                                ? (inplayRunnerData[inplayDetails.matchId]
+                                ?.runners[0]?.backPrice | number: "0.0-2")
+                                : ""
+                                }}</a>
+                            </button>
+                          </td>
+
+                          <td class="dflex">
+                            <button class="lay">
+                              <a id="lay1_{{ $index }}" class="odds" data-ng-side="Lay">{{
+                                inplayRunnerData[inplayDetails.matchId]?.runners
+                                ? (inplayRunnerData[inplayDetails.matchId]
+                                ?.runners[0]?.layPrice | number: "0.0-2")
+                                : ""
+                                }}</a>
+                            </button>
+                          </td>
+                          <td class="dflex">
+                            <button class="back">
+                              <a data-ng-click="betSlip(inplayDetails.bfId,'back', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName+$index+'back', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName, inplayDetails.matchName, inplayRunnerData[inplayDetails.matchId]?.runners[2].backPrice,inplayDetails.marketId,inplayDetails.matchId,'1',0,0,sportId,inplayDetails.matchBfId)"
+                                id="back3_{{ $index }}" class="odds" data-ng-side="Back">{{
+                                inplayRunnerData[inplayDetails.matchId]?.runners
+                                ? (inplayRunnerData[inplayDetails.matchId]
+                                ?.runners[2]?.backPrice | number: '0.0-2')
+                                : ""
+                                }}</a>
+                            </button>
+                          </td>
+                          <td class="dflex">
+                            <button class="lay">
+                              <a data-ng-click="betSlip(inplayDetails.bfId,'lay', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName+$index+'back', inplayRunnerData[inplayDetails.matchId]?.runners[2].runnerName, inplayDetails.matchName, inplayRunnerData[inplayDetails.matchId]?.runners[2].layPrice,inplayDetails.marketId,inplayDetails.matchId,'1',0,0,sportId,inplayDetails.matchBfId)"
+                                id="lay3_{{ $index }}" class="odds" data-ng-side="Lay">{{
+                                inplayRunnerData[inplayDetails.matchId]?.runners
+                                ? (inplayRunnerData[inplayDetails.matchId]
+                                ?.runners[2]?.layPrice | number: '0.0-2')
+                                : ""
+                                }}</a>
+                            </button>
+                          </td>
+                          <td class="dflex">
+                            <button class="back">
+                              <a id="back2_{{ $index }}" class="odds" data-ng-side="Back">{{
+                                inplayRunnerData[inplayDetails.matchId]?.runners
+                                ? (inplayRunnerData[inplayDetails.matchId]
+                                ?.runners[1]?.backPrice | number: "0.0-2")
+                                : ""
+                                }}</a>
+                            </button>
+                          </td>
+                          <td class="dflex">
+                            <button class="lay">
+                              <a id="lay2_{{ $index }}" class="odds" data-ng-side="Lay">{{
+                                inplayRunnerData[inplayDetails.matchId]?.runners
+                                ? (inplayRunnerData[inplayDetails.matchId]
+                                ?.runners[1]?.layPrice | number: "0.0-2")
+                                : ""
+                                }}</a>
+                            </button>
+                          </td>
+                        </div>
+                      </div>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

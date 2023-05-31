@@ -1,0 +1,318 @@
+.scene {
+  overflow: hidden;
+  background: url(/assets/images/bg2.jpg) #d7ecfa no-repeat !important;
+  background-color: #bdb9bd;
+  z-index: -1;
+}
+
+.scene {
+  position: absolute;
+  top: 0px;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  right: 0;
+  height: 800px;
+}
+
+.clouds {
+  width: 100%;
+  height: 1000px;
+  top: 20px;
+  position: relative;
+  animation-duration: 50s;
+  animation-direction: alternate;
+  animation-name: example;
+  animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0% {
+    left: 0px;
+    top: 10px;
+  }
+
+  100% {
+    left: 1000px;
+    top: 0px;
+  }
+}
+
+.scene > div {
+  position: absolute;
+  bottom: 0;
+}
+
+.ground {
+  width: 100%;
+  height: 30px;
+  background: #1d1818;
+  z-index: 999;
+}
+
+.scene > div.clouds {
+  width: 101%;
+  height: 405px;
+  bottom: 90px;
+  background: url(/assets/images/CLouds5.png) repeat;
+  top: 8px;
+  z-index: -1;
+}
+
+.loginbox-title img {
+  width: 220px;
+  aspect-ratio: auto 220 / 75;
+  height: 50px;
+}
+
+.captcha-box i {
+  position: absolute;
+  right: 0;
+  top: 46%;
+  transform: translateY(-50%);
+}
+
+.last-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 40px;
+
+  .play-pause button {
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    border: 1px solid rgba($color: #000000, $alpha: 0.11);
+    border-radius: 3px;
+  }
+}
+
+.root-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  position: relative;
+  display: flex;
+  background: var(--secondary-bg);
+  box-shadow: 0 2px 20px 3px rgb(0 0 0 / 12%);
+  border-radius: 4px;
+
+  & > div {
+    flex: 1;
+    width: 310px;
+  }
+
+  & > div:nth-child(2) {
+    position: relative;
+  }
+}
+
+.login-container .loginbox {
+  position: relative;
+  // width: 310px !important;
+  height: auto !important;
+  padding: 0 0 20px 0;
+  border-radius: 3px;
+  // box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+}
+
+.login-container .loginbox .loginbox-title {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  padding: 10px;
+  font-family: "Lucida Sans", "trebuchet MS", Arial, Helvetica;
+  font-size: 20px;
+  font-weight: normal;
+  color: #444;
+  background-color: #000000;
+}
+
+.login-container .loginbox .loginbox-social {
+  padding: 0 10px 10px;
+  text-align: center;
+}
+
+.login-container .loginbox .loginbox-social .social-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #a9a9a9;
+  margin-top: 10px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons {
+  height: 80px;
+  padding: 15px 35px;
+  text-align: center;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-facebook {
+  float: left;
+  border: 2px solid #3b5998;
+  color: #3b5998;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+  background-color: var(--secondary-bg);
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-facebook i {
+  font-size: 26px;
+  line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-twitter {
+  float: left;
+  border: 2px solid #29c1f6;
+  color: #29c1f6;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 30px;
+  background-color: var(--secondary-bg);
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-twitter i {
+  font-size: 26px;
+  line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-google {
+  border: 2px solid #ef4f1d;
+  color: #ef4f1d;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: var(--secondary-bg);
+}
+
+.login-container .loginbox .loginbox-social .social-buttons .button-google i {
+  font-size: 26px;
+  line-height: 50px;
+}
+
+.login-container .loginbox .loginbox-or {
+  position: relative;
+  text-align: center;
+  height: 20px;
+}
+
+.login-container .loginbox .loginbox-or .or {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 25px);
+  width: 50px;
+  height: 20px;
+  background-color: var(--secondary-bg);
+  color: #999;
+  margin: 0 auto;
+}
+
+.login-container .loginbox .loginbox-or .or-line {
+  position: absolute;
+  height: 1px;
+  top: 10px;
+  left: 40px;
+  right: 40px;
+  background-color: #ccc;
+}
+
+.login-container .loginbox .loginbox-textbox {
+  padding: 8px 40px;
+}
+
+.login-container .loginbox .loginbox-textbox .form-control {
+  border-radius: 3px !important;
+  background-clip: padding-box !important;
+}
+
+.login-container .loginbox .loginbox-forgot {
+  padding-left: 40px;
+}
+
+.login-container .loginbox .loginbox-forgot a {
+  font-size: 11px;
+  color: #666;
+}
+
+.login-container .loginbox .loginbox-submit {
+  padding: 10px 40px;
+}
+
+.login-container .loginbox .loginbox-signup {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.login-container .loginbox .loginbox-signup a {
+  font-size: 13px;
+  color: #666;
+}
+
+.login-container .logobox {
+  width: 300px !important;
+  height: 50px !important;
+  padding: 5px;
+  margin-top: 15px;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary-bg);
+  text-align: left;
+}
+
+.kv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+  & > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  img {
+    background-image: url(/assets/images/lcexch-ferrari.png);
+    background-size: contain;
+    background-position: 0;
+    background-repeat: no-repeat;
+    height: 93%;
+    width: 70%;
+  }
+}
+
+.kv-mobile {
+  position: absolute;
+  top: -136px;
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-50%);
+
+  img {
+    background-image: url(/assets/images/lcexch-ferrari.png);
+    background-size: contain;
+    background-position: 0;
+    background-repeat: no-repeat;
+    height: 126px;
+    width: 90px;
+  }
+}
+
+
+#authenticateImage{
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    width: 60px;
+    height: 19px;
+}

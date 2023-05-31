@@ -1,0 +1,89 @@
+.function-wrap .input-list {
+    .btn {
+        list-style-type: none;
+    }
+
+}
+
+.tab {
+    min-width: 375px;
+    width: 100%;
+    margin: 0 0 10px;
+    border-radius: 5px;
+    display: flex;
+    padding: 0;
+    border-bottom: 1px solid #2dc3e8;
+}
+
+@media (min-width: 1200px) {
+    .col-lg-2 {
+        width: 10.666667%;
+        margin-top: 4px;
+    }
+}
+
+.tab li {
+    list-style-type: none;
+}
+
+ul.tab.col3 li {
+    padding: 10px 12px 10px 7px;
+    text-align: center;
+
+}
+
+.select {
+    background: #fefeff;
+    border-bottom: 3px solid #5db2ff;
+}
+.detail a:hover{
+    text-decoration: none;
+}
+
+.input-list li {
+    list-style: none;
+}
+
+.form-login {
+    display: inline-grid;
+    width: 95%;
+
+}
+
+#getPL{
+    color: white;
+}
+
+.btn-sub{
+    margin-left: 10px;
+}
+
+@media (max-width:799px){
+    .cont{
+        display: block;
+    }
+    .tab{
+        display: block;
+        padding-left: 3px;
+    }
+    ul.tab.col3 li{
+        text-align: left;
+    }
+    .input-list{
+        padding-left: 3px;
+    }
+    .col-lg-2.col-sm-2.col-xl-2 {
+        float: left;
+    }
+    button.btn.btn-blue{
+        width: 100%;
+    }
+    .date-cls{
+        display: flex;
+        justify-content: center;
+    }
+    .btn-sub{
+        margin-left: 0;
+    }
+
+}

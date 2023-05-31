@@ -1,0 +1,90 @@
+.inplay-page {
+  color: green;
+}
+
+.game-name {
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--text-primary);;
+  font-weight: 500;
+}
+
+.mb-0 {
+  margin-bottom: 0!important;
+}
+.row.row5>[class*=col-] {
+  padding-left: 5px;
+  padding-right: 5px;
+  display: inherit;
+}
+
+.dflex{
+  display: flex;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  width: 100%;
+}
+.game-col {
+  float: left;
+  width: 33.33%;
+  font-size: 10px;
+}
+
+.text-center {
+  text-align: center!important;
+}
+.game-col a {
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  float: left;
+  cursor: pointer;
+  width: 50%;
+  color: var(--site-color);
+}
+
+
+.btn-back {
+  background-color: #72bbef;
+}
+.btn-lay {
+  background-color: #faa9ba;
+}
+.row {
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x)/-2);
+  margin-left: calc(var(--bs-gutter-x)/-2);
+  padding: 1px;
+}
+.col-xs-12{
+  padding: 0;
+}
+
+.panel-body {
+  padding: 5px;
+  background-color: var(--lightMode);
+
+}
+
+a {
+  color: var(--text-primary);;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: bold;
+}
+.game-col a {
+  height: 24px;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 700;
+  float: left;
+  cursor: pointer;
+  width: 50%;
+  color: var(--site-color);
+}

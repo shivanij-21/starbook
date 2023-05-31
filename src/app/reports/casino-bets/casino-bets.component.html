@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>Order Type</label>
+      <select
+        name="ctl00$MasterContentPlaceHolder$lstorders"
+        id="MasterContentPlaceHolder_lstorders"
+        class="form-control dropdown-toggle"
+        [(ngModel)]="selectedBetStatus"
+      >
+        <option *ngFor="let betStatus of betStatusList" [ngValue]="betStatus">
+          {{ betStatus.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>Start Date</label>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="from"
+          class="form-control"
+          bsDatepicker
+          [minDate]="month"
+          [maxDate]="toDate"
+          [(bsValue)]="fromDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>End Date</label>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="to"
+          class="form-control"
+          bsDatepicker
+          [minDate]="fromDate"
+          [maxDate]="toDate"
+          [(bsValue)]="toDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="form-group">
+      <label>&nbsp;</label><br />
+      <button
+        (click)="getBetHistory()"
+        value="Load Report"
+        class="btn btn-blue"
+      >
+        Load Report
+      </button>
+    </div>
+  </div>
+</div>
+<div class="widget">
+  <div class="widget-header">
+    <div class="btn-group pull-left" dropdown>
+      <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle"
+              aria-controls="dropdown-basic">
+              <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+          role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'xml'">XML</a></li>
+        <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'csv'">CSV</a></li>
+        <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'xls'">MS-Excel</a></li>
+      </ul>
+    </div>
+    <div class="pull-left" style="margin-top: 10px">
+      <strong> Casino Bets</strong>
+    </div>
+  </div>
+  <div class="widget-body">
+    <div class="table-responsive" id="no-more-tables">
+      <table id="no-more-tables" class="table table-condensed table table-bordered">
+        <thead>
+          <tr>
+            <th>Game Code</th>
+            <th>Game Name</th>
+            <th>Round ID</th>
+            <th>Runner Name</th>
+            <th>Side</th>
+            <th>Price</th>
+            <th>Size</th>
+            <th>Placed Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            [ngClass]="{'backRow': bet.betType === 'back', 'layRow': bet.betType === 'lay'}"
+            *ngFor="let bet of betHistory"
+          >
+            <td data-title="Bet ID">{{ bet.betId }}</td>
+            <td data-title="Market Name">
+              {{ bet.sportName | titlecase }}/{{ bet.eventName }}/
+              {{ bet.marketName }}
+            </td>
+            <td data-title="Selection ID">{{bet.round}}</td>
+            <td data-title="Runner Name">{{ bet.selName }}</td>
+            <td data-title="Side" class="mbSide">
+              {{ bet.betType | uppercase }}
+            </td>
+            <td data-title="Order Price">{{ bet.odds }}</td>
+            <td data-title="Order Size">{{ bet.stake | number: "0.2" }}</td>
+            <td data-title="Placed Date">
+              {{ bet.betTime | date: "dd/MM/yyy HH:mm:ss aa" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

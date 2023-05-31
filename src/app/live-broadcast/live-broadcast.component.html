@@ -1,0 +1,89 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#navbar"
+        aria-expanded="false"
+        aria-controls="navbar"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">
+        <small>
+          <img
+            src="assets/images/weexch666.png"
+            title="Exchange powered by Betfair"
+            alt="LOGO"
+          />
+        </small>
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container isPadding" id="content" style="height: 520px; margin-top: 100px">
+  <div class="col-xs-12 col-lg-8 col-md-8 isPadding">
+    <div
+      class="databox databox-xxlg radius-bordered databox-shadowed databox-vertical databox-graded"
+      style="height: 500px"
+    >
+      <div class="databox-top bordered-bottom-2 bordered-orange bg-ivory">
+        <div class="col-lg-8 col-sm-8 col-xs-8 text-align-left">
+          <h4 class="carbon"><i class="fa fa-tv orange"></i>Live Broadcast</h4>
+        </div>
+      </div>
+      <div class="databox-bottom">
+        <div style="margin: 0 auto; width: 100%;" [ngStyle]="{'height.px':height}">
+          <iframe
+            class="iframe-placeholder embed-responsive-item"
+            width="100%"
+            height="100%"
+            scrolling="no"
+            frameborder="0"
+            style="overflow: hidden"
+            gesture="media"
+            [src]="tvUrl? tvUrl: ''"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-xs-12 col-lg-4 col-md-4">
+    <div class="widget" id="navbar">
+      <div class="widget-header">
+        <span class="widget-caption carbon"
+          ><strong>Sports Streams</strong></span
+        >
+        <div class="widget-buttons"></div>
+      </div>
+      <div class="widget-body no-padding">
+        <accordion [isAnimated]="true">
+          <accordion-group [heading]="sport.name | uppercase" *ngFor="let sport of sportsMatchList; trackBy: trackById">
+            <ol class="list-group">
+              <li class="list-group-item" *ngFor="let tour of sport.tournaments; trackBy: trackById">
+                <h4><strong>{{tour.name}}</strong></h4>
+                <ul class="list-group">
+                  <li class="list-group-item" *ngFor="let match of tour.matches; trackBy: trackById">
+                    <a
+                      (click)="getStream(match);"
+                      tabindex="-1"
+                    >
+                      <span class="label label-success blink_me" *ngIf="match.inPlay === 1">LIVE</span>
+                      {{match.name}}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+  </div>
+</div>

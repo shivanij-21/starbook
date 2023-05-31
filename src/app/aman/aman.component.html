@@ -1,0 +1,29 @@
+<div role="main" class="right_col">
+    <div class="wrapper mt-2 diamond-casino-container">
+        <div class="card">
+            <div class="row mt-2">
+                <div class="col-md-12" style="width: 100%; padding: 0;">
+                    <h4 class="casino-title mb-0">
+                        <div class="arrows-left arrows"><span></span></div>
+                        AURA <div class="arrows-right arrows"><span></span></div>
+                    </h4>
+                </div>
+                <div class="col-md-12" style="padding-top: 10px;">
+                    <div class="col-md-2 col-xs-6 inner-img"  *ngFor="let casino of casinoListlist">
+                        <div class="casino-box casinoicons" ><a 
+                            routerLink="/tpp/{{casino.opentable}}">
+                                <div class="casino-icons"><img class="img-fluid"
+                                        src="assets/aman/{{casino.tableName}}.png">
+                                </div>
+                                <dl class="entrance-title">
+                                    <dt>{{casino.CasinoName}}</dt>
+                                    <dd>PLay Now</dd>
+                                </dl>
+                            </a></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

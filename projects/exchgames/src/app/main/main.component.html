@@ -1,0 +1,310 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg nav-head fixed-top" id="mainNav">
+  <div class="row">
+    <div class="col-2">
+      <button class="btn btn-dark navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><i class="fa fa-bars fa-2x"></i></span>
+    </button>
+    </div>
+    <div class="col-4" >
+      <a [href]="rootUrl">
+      <small>
+        <img src="assets/images/logos/{{siteName}}.png" class="logo" alt="LOGO" />
+      </small>
+    </a>
+    </div>
+    <div class="col-6">
+      <a class="hideweb">
+        <li>  <b>
+          <span class="mtext">
+            Balance: {{currentUser?.currencyCode}}<span id="spBalance"
+              [ngStyle]="{'color': balanceData?.balance > 0? 'forestgreen': 'red'}">{{balanceData?.balance |
+              indianCurrency}}</span>
+          </span>
+        </b>
+        <!-- <b>
+          <span class="mtext">
+            <i id="refresh" class="fa fa-refresh rotate down" aria-hidden="true"
+              (click)="userService.getBalance()"></i>
+          </span>
+        </b> -->
+      </li>
+        <li> 
+           <b>
+          <span class="mtext">
+            Liability:
+            <span id="spLiab" style="color: red;">{{balanceData?.exposure | indianCurrency}}</span>
+          </span>
+        </b>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link1 dropdown-toggle mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+          <b class="b">My Account</b>  <i class="fa fa-user-circle-o"></i>
+            <span id="spcl" class="d-lg-none">{{currentUser?.userName}}</span>
+          </a>
+          <div id="dvmenu" class="dropdown-menu" aria-labelledby="messagesDropdown"
+            style="width: 100%; min-width: 240px; right: 5px">
+            <h6 class="dropdown-header">
+              <span id="ClientName" style="font-weight: bold">{{currentUser?.userName}}</span>
+            </h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item account" [href]="rootUrl + '/#/reports/acc-statement'" target="_blank">Account
+              Statement</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item account" [href]="rootUrl + '/#/reports/my-bets'" target="_blank">My Bets</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item account" [href]="rootUrl + '/#/reports/pnl'" target="_blank">Profit & Loss</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item account" [href]="rootUrl + '/#/reports/exch-bets'" target="_blank">Exchange Game
+              Report</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li>
+  
+      </a>
+    </div>
+  </div>
+
+  <!-- <a class="navbar-brand" [href]="rootUrl">
+    <small>
+      <img src="assets/images/logos/{{siteName}}.png" title="SS Exchange powered by Betfair" alt="LOGO" />
+    </small>
+    <a class="hideweb">
+      <li>  <b>
+        <span class="mtext">
+          Balance: {{currentUser?.currencyCode}}<span id="spBalance"
+            [ngStyle]="{'color': balanceData?.balance > 0? 'forestgreen': 'red'}">{{balanceData?.balance |
+            indianCurrency}}</span>
+        </span>
+      </b>
+      <b>
+        <span class="mtext">
+          <i id="refresh" class="fa fa-refresh rotate down" aria-hidden="true"
+            (click)="userService.getBalance()"></i>
+        </span>
+      </b>
+    </li>
+      <li> 
+         <b>
+        <span class="mtext">
+          Liability:
+          <span id="spLiab" style="color: red;">{{balanceData?.exposure | indianCurrency}}</span>
+        </span>
+      </b>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link1 dropdown-toggle mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+        <b class="b">My Account</b>  <i class="fa fa-user-circle-o"></i>
+          <span id="spcl" class="d-lg-none">{{currentUser?.userName}}</span>
+        </a>
+        <div id="dvmenu" class="dropdown-menu" aria-labelledby="messagesDropdown"
+          style="width: 100%; min-width: 240px; right: 5px">
+          <h6 class="dropdown-header">
+            <span id="ClientName" style="font-weight: bold">{{currentUser?.userName}}</span>
+          </h6>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/acc-statement'" target="_blank">Account
+            Statement</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/my-bets'" target="_blank">My Bets</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/pnl'" target="_blank">Profit & Loss</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/exch-bets'" target="_blank">Exchange Game
+            Report</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+
+    </a>
+  </a> -->
+
+
+
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav" id="allGames" style="margin-left: 5px">
+      <!-- <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/baccarat-turbo"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          ><div class="gameicon baccarat-icon"></div>
+          <span class="mtext">Baccarat</span>
+          <span class="badge badge-primary">Turbo</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/baccarat"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          ><div class="gameicon baccarat-icon"></div>
+          <span class="mtext">Baccarat</span></a
+        >
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/blackjack-turbo" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <div class="gameicon blackjack-icon"></div>
+          <span class="mtext">BlackJack</span>
+          <span class="badge badge-primary">Turbo</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/blackjack" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <div class="gameicon blackjack-icon"></div>
+          <span class="mtext">BlackJack</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/holdem-turbo" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <div class="gameicon nhold-icon"></div>
+          <span class="mtext">Hold'em</span>
+          <span class="badge badge-primary">Turbo</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/holdem" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <div class="gameicon nhold-icon"></div>
+          <span class="mtext">Hold'em</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/omaha-hi" data-toggle="collapse" data-target=".navbar-collapse.show">
+          <div class="gameicon nhold-icon"></div>
+          <span class="mtext">Omaha Hi</span>
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item hidemob" style="margin-left: 5px">
+        <a class="nav-link">
+          <b>
+            <span class="mtext">
+              Balance: {{currentUser?.currencyCode}}<span id="spBalance"
+                [ngStyle]="{'color': balanceData?.balance > 0? 'forestgreen': 'red'}">{{balanceData?.balance |
+                indianCurrency}}</span>
+            </span>
+          </b>
+        </a>
+      </li>
+      <li class="nav-item hidemob" style="padding: 0px 15px 0px 0px; margin-left: 5px">
+        <a class="nav-link">
+          <b>
+            <span class="mtext">
+              Liability:
+              <span id="spLiab" style="color: red;">{{balanceData?.exposure | indianCurrency}}</span>
+            </span>
+          </b>
+        </a>
+      </li>
+      <li class="nav-item hidemob">
+        <a class="nav-link">
+          <b>
+            <span class="mtext">
+              <i id="refresh" class="fa fa-refresh rotate down" aria-hidden="true"
+                (click)="userService.getBalance()"></i>
+            </span>
+          </b>
+        </a>
+      </li>
+      <li class="nav-item hidemob dropdown" style="margin-left: 5px">
+        <a class="nav-link dropdown-toggle mr-lg-2" href="#" id="messagesDropdown" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-user-circle-o"></i>
+          <span id="spcl" class="d-lg-none">{{currentUser?.userName}}</span>
+        </a>
+        <div id="dvmenu" class="dropdown-menu" aria-labelledby="messagesDropdown"
+          style="width: 100%; min-width: 240px; right: 5px">
+          <h6 class="dropdown-header">
+            <span id="ClientName" style="font-weight: bold">{{currentUser?.userName}}</span>
+          </h6>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/acc-statement'" target="_blank">Account
+            Statement</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/my-bets'" target="_blank">My Bets</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/pnl'" target="_blank">Profit & Loss</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item account" [href]="rootUrl + '/#/reports/exch-bets'" target="_blank">Exchange Game
+            Report</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div id="div1">
+  <div class="content-wrapper py-3">
+    <router-outlet></router-outlet>
+    <!--End Empty-->
+    <!--Card-1-->
+  </div>
+  <footer class="footer mt-auto py-3 nav-head">
+    <div class="container">
+      <p style="text-align: center">
+        <span style="font-size: 11px; color: var(--secondary-bg); font-weight: bold">Powered by
+        </span>
+        <img src="assets/images/betfair-logo-130x40.png" alt="betfair" />
+        <a href="/Terms#parentalsupervision">
+          <img src="assets/images/18Plus.png" width="50" height="50" alt="18+" />
+        </a>
+      </p>
+    </div>
+  </footer>
+</div>
+<!-- /.content-wrapper -->
+<!-- Scroll to Top Button -->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fa fa-angle-up"></i>
+</a>
+<div class="modal fade" id="versionModal1" tabindex="-1" role="dialog" aria-labelledby="versionModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body" id="versionModal">
+        This Internet Expolorer browser version does not supported to run the
+        application<br /><br />
+        please run in Chrome/Firefox/Edge browser
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancel
+        </button>
+        <a class="btn btn-primary" href="login.html">Close</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Logout Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Select "Logout" below if you are ready to end your current session.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancel
+        </button>
+        <a class="btn btn-primary" href="login.html">Logout</a>
+      </div>
+    </div>
+  </div>
+</div>

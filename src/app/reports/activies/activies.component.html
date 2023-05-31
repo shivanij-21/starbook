@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-xs-12"></div>
+  <div class="col-xs-12">
+    <h1>User Activities (Last 15 Logins)</h1>
+
+    <hr />
+    <table
+      id="no-more-tables"
+      class="table table table-bordered table-hover table-striped"
+    >
+      <thead>
+        <tr>
+          <th>Login Date &amp; Time</th>
+          <th>Login Status</th>
+          <th>IP Address</th>
+          <th>ISP</th>
+          <th>Origin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ActivityData of ActivityDataList">
+          <td data-title="Login Date &amp; Time">
+            {{ ActivityData.loginTime | date: "yyyy-MM-dd HH:mm:ss" }}
+          </td>
+          <td data-title="Login Status">
+            {{ loginStatusMap[ActivityData.loginStatus] }}
+          </td>
+          <td data-title="IP Address">
+            {{ ActivityData.loginIp }}
+            <a
+              href="https://www.ip2location.com/demo/{{ActivityData.loginIp}}"
+              title="IP2Location"
+              target="_blank"
+            >
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+            <a
+              href="http://ip-api.com/#{{ActivityData.loginIp}}"
+              title="IP-API.com"
+              target="_blank"
+            >
+              <span class="glyphicon glyphicon-info-sign"></span>
+            </a>
+          </td>
+          <td data-title="ISP">
+            {{
+              ActivityData.ISP == null || ActivityData.ISP == ""
+                ? " - "
+                : ActivityData.ISP
+            }}
+          </td>
+          <td data-title="City/State/Country">
+            {{
+              ActivityData.origin == null || ActivityData.origin == ""
+                ? "-"
+                : ActivityData.origin
+            }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

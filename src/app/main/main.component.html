@@ -1,0 +1,154 @@
+<app-header #header (isOpenEvent)="isSidebarOpen = $event"></app-header>
+<div class="main-container container-fluid">
+  <div class="page-container">
+    <app-col-left [ngStyle]="{ display: isSidebarOpen ? 'block' : 'none' }"></app-col-left>
+    <app-marquee></app-marquee>
+    <div class="page-content" style="margin-left: 0;overflow-y: scroll;">
+      <!-- <div class="page-breadcrumbs">
+        <ul class="breadcrumb" style="width: 100%">
+          <li><i class="fa fa-comments"></i></li>
+          <li class="example1">
+            <span id="msg">Welcome to SS Exhange</span>
+          </li>
+        </ul>
+      </div> -->
+      <div class="page-header" [ngClass]="{'headercss':isheader}">
+        <div class="header-buttons">
+          <a class="hidemob" routerLink="/">
+            <i class="fas fa-home"></i>
+          </a>
+          <a (click)="openModal(template)" style="cursor: pointer">
+            MY MARKET </a><a routerLink="/sports/inplay">
+            <span class="blink_me">IN PLAY</span>
+          </a>
+
+
+          <a routerLink="/betgame"> <span class="blink_me1">BETGAMES</span></a>
+          <a routerLink="/twain"> <span class="blink_me1">TWAIN</span></a>
+          <a routerLink="/supernova/SN" *ngIf="showCasino"> <span class="blink_me1">LIVE CASINOS + SLOTS</span></a>
+          <a routerLink="/poker" *ngIf="isPoker"> <span class="blink_me1">POKER</span></a>
+          <a routerLink="/slot-list" *ngIf="showCasino"> <span class="blink_me1">SLOTS</span></a>
+          <a routerLink="/awclist" *ngIf="showCasino"> <span class="blink_me1">AWC</span></a>
+          <a routerLink="/casinoiframe" *ngIf="showCasino"> <span class="blink_me1">AURA</span></a>
+          <a *ngIf="winnerMarket" [routerLink]="[
+          '/full-market',
+          winnerMarket?.SportbfId,
+          winnerMarket?.TourbfId,
+          winnerMarket?.matchId,
+          winnerMarket?.bfId
+        ]">
+        <span class="blink_me"> {{winnerMarket?.matchName}} </span>
+      </a>
+          <a routerLink="/sports/4"> CRICKET </a>
+        
+
+          <a routerLink="/sports/1"> FOOTBALL </a>
+          <a routerLink="/sports/2"> TENNIS </a>
+          <a routerLink="/full-market/85/2107191733/1702261800/1.170226180000"><span class="blink_me">ELECTION</span> </a>
+
+          <a  [routerLink]="['horse-highlight']"> HORSE RACING </a>
+          <a [routerLink]="['grey-highlight']"> GREYHOUND RACING </a>
+          <!-- <a routerLink="/sports/52"> KABADDI </a> -->
+
+
+
+
+          <!-- <a routerLink="/casinoiframe" *ngIf="showCasino"> <span class="blink_me">LIVE CASINO </span></a> -->
+             <!-- <a routerLink="/sports/10" *ngIf="showCasino"> <span class="blink_me">INTERNATIONAL CASINO </span></a> -->
+          <a href="exchgames/#/">
+            <span class="blink_me">X-GAMES</span>
+          </a>
+          <!-- <a routerLink="/election" > Election </a> -->
+          <a routerLink="/LiveBroadcast" target="_blank"> Live Stream </a>
+        </div>
+      </div>
+      <div class="page-body">
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+      
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">My Markets</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table table-bordered table-condensed table-hover table-striped" id="myMarketTable">
+      <thead>
+        <tr>
+          <th>Market ID</th>
+          <th>
+            Market Name
+            <a class="btn btn-xs btn-azure pull-right" (click)="getMyMarkets()"><i class="fa fa-refresh"></i> Reload</a>
+          </th>
+          <th>Liability</th>
+        </tr>
+        <tr *ngFor="let market of myMarkets">
+          <td>
+            {{
+            market.marketId.includes("_")
+            ? market.marketId.split("_")[1]
+            : market.marketId
+            }}
+          </td>
+          <td>
+            <a *ngIf="(+market.sportId != 7 && +market.sportId != 4339) && !market.sportName.toLowerCase().includes('exchange'); else racesTemp"
+              [routerLink]="['full-market', market.sportId == '-1'? 4: market.sportId, market.competitionId, market.eventId, market.marketId.split('_')[1]? market.marketId.split('_')[1]: market.marketId]">
+              <span *ngIf="market.unmatched == 1" class="unmatched">Unmatched </span> {{market.eventName}} > {{
+              market.marketName }}</a>
+            <ng-template #racesTemp>
+              <a *ngIf="+market.sportId == 7 || +market.sportId == 4339 && !market.sportName.toLowerCase().includes('exchange'); else xgamesTemp"
+                [routerLink]="['full-market', market.sportId, market.competitionId, market.eventId, market.marketId.split('_')[1]? market.marketId.split('_')[1]: market.marketId]"
+                [queryParams]="{o: true}"> <span *ngIf="market.unmatched == 1" class="unmatched">Unmatched </span>
+                {{market.eventName}} > {{ market.marketName }}</a>
+            </ng-template>
+            <ng-template #xgamesTemp>
+              <a *ngIf="market.sportName.toLowerCase().includes('exchange')"
+                href="/exchgames/#/{{market.eventName.toLowerCase()}}"><span *ngIf="market.unmatched == 1"
+                  class="unmatched">Unmatched </span>{{market.eventName}} > {{ market.marketName }}</a>
+            </ng-template>
+          </td>
+          <td style="color: red">{{ market.liability | indianCurrency }}</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</ng-template>
+
+<div *ngIf="showRulesAgree" [config]="{ show: true }" bsModal #autoModalShown="bs-modal"
+  (onHidden)="autoModalShown.hide()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dialog-auto-name">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Terms & Conditions Agreement</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="autoModalShown.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ rules }}
+        </div>
+        <div class="modal-footer">
+          <div class="checkbox pull-left">
+            <label>
+              <input type="checkbox" id="agreementShowme" />
+              <span class="text">Don't show me again</span>
+            </label>
+          </div>
+          <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close" (click)="iAgree()">
+            <span aria-hidden="true"><i class="fa fa-check-square-o fa-1x"></i> I agree with all the
+              terms &amp; conditions</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<h2>Betgames Bets</h2>
+<ul class="tab col3">
+    <li class="detail select"><a class="bankbtn" routerLink="/reports/betgame_bettinghistory">Betgames Bets History</a></li>
+
+    <li class="detail"><a class="upibtn" routerLink="/reports/betgame_profitandloss">Betgames Profit &amp; Loss</a></li>
+</ul>
+<!-- <ul class="report-tab-wrap" style="display: block;">
+    <li id="reportType_exchange" class="report-tab"> ALL </li>
+</ul> -->
+
+
+<div class="row">
+    <div class="col-lg-3 col-sm-3">
+        <div class="form-group">
+            <label>Period</label>
+            <div class="input-group">
+                <input type="text" placeholder="from" class="form-control" bsDatepicker [minDate]="month"
+                    [maxDate]="toDate" [(bsValue)]="fromDate" [bsConfig]="{
+                  dateInputFormat: 'DD-MM-Y HH:mm:ss',
+                  containerClass: 'theme-blue'
+                }" />
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+            <!-- second date -->
+        </div>
+    </div>
+    <div class="col-lg-3 col-sm-3">
+        <div class="form-group">
+            <label> to</label>
+            <div class="input-group">
+                <input type="text" placeholder="to" class="form-control" bsDatepicker [minDate]="fromDate"
+                    [maxDate]="today" [(bsValue)]="toDate" [bsConfig]="{
+                  dateInputFormat: 'DD-MM-Y HH:mm:ss',
+                  containerClass: 'theme-blue'
+                }" />
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            </div>
+
+        </div>
+    </div>
+    <div class="date-cls">
+        <div class="col-lg-2 col-sm-2 col-xl-2">
+            <div class="form-group">
+                <label></label>
+                <div class="input-group">
+                    <a id="today" (click)="selectTab('today')" class="btn">Just For Today</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-2 col-sm-2 ">
+            <div class="form-group">
+                <label></label>
+                <div class="input-group">
+                    <a id="yesterday" (click)="selectTab('yesterday')" class="btn">From Yesterday</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-2 col-sm-2">
+        <div class="form-group">
+            <label></label><br>
+            <button value="Load Report" class="btn btn-blue btn-sub">
+                <a id="getPL" class="btn-send" (click)="GetBetHistory()" class="btn-send">Get History</a>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- <div class="function-wrap">
+
+    <ul class="input-list">
+        <li><a id="today" (click)="selectTab('today')" class="btn">Just For Today</a></li>
+        <li><a id="yesterday" (click)="selectTab('yesterday')" class="btn">From Yesterday</a></li>
+        <li style="display: none;"><a id="last7days" (click)="selectTab('last7days')" class="btn">Last 7 days</a></li>
+        <li style="display: none;"><a id="last30days" (click)="selectTab('last30days')" class="btn">Last 30 days</a>
+        </li>
+        <li style="display: none;"><a id="last2months" (click)="selectTab('last2months')" class="btn">Last 2 Months</a>
+        </li>
+        <li style="display: none;"><a id="last3months" (click)="selectTab('last3months')" class="btn">Last 3 Months</a>
+        </li>
+        <li><a id="getPL" (click)="GetBetHistory()" class="btn-send">Get History</a></li>
+    </ul>
+</div> -->
+
+<div id="report" style="display: block;">
+    <table id="matchTable" class="table table table-bordered table-hover table-striped" style="display: table;">
+        <tbody>
+            <tr>
+                <th width="11%" class="align-L">Bet ID </th>
+                <th width="11%" class="align-L">Event </th>
+                <th width="8%" class="align-L">Bet placed </th>
+                <th width="7%" class="align-L">Bet_settled </th>
+                <th width="8%">Stake </th>
+                <th width="10%">Profit/Loss </th>
+            </tr>
+            <tr style="display: table-row;" id="matchRow0" *ngFor="let bet of bettingHistory">
+                <td class="align-L"> {{ bet.betId }}</td>
+                <td class="align-L"> {{ bet.sportName }}<img class="fromto" src="assets/images/transparent.gif">{{
+                    bet.eventName }}<img class="fromto" src="assets/images/transparent.gif">{{ bet.betId }}</td>
+                <td class="align-L"> {{ bet.betTime | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                <td class="align-L"> {{ bet.settledDate | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                <td>{{ bet.stake | number: '0.2' }}</td>
+                <td [ngClass]="{'red':bet.PL<0,'green':bet.PL>0}">{{ bet.PL| number: '0.2' }}</td>
+
+
+
+
+        </tbody>
+    </table>
+</div>
+<div id="noReportMessage" *ngIf="bettingHistory.length==0 && !loader">
+    <p>Betting History enables you to review the bets you have placed. <br>Specify the time period during which your
+        bets were placed, the type of markets on
+        which the bets were placed, and the sport.</p>
+    <p>Betting History is available online for the past 30 days.</p>
+</div>

@@ -1,0 +1,1101 @@
+<div id="ctl30">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-xs-12">
+      <div class="responsive-banner1">
+        <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <div class="attention">
+                <h3><strong>.:: GOOD NEWS ::.</strong></h3>
+
+                <p>
+                  <strong
+                    >Betting is open <br />
+                    Now you can enjoy best exchange betting experience.</strong
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        <app-promote-banner></app-promote-banner>
+      </div>
+      <div class="widget">
+        <div class="widget-header"><span class="widget-caption carbon" style="display: flex; align-items: center;"><span
+              class="icn-colorfull icn-colorfull-horse"></span><span style="margin-left: 5px;"><strong>Upcoming Horse
+                Racing <img src="https://images.staticcontent.io/casino/banner/images/horse.svg"
+                  class="horsehomeimg"></strong></span></span>
+        </div>
+        <ul class="nav nav-tabs" style="display: flex;overflow-x: auto;;overflow-y: hidden;">
+          <ng-container *ngFor="let race of nextHorseRaces;let i =index">
+            <li><a *ngIf="i<15" [routerLink]="[
+              '/full-market',
+              7.1,
+              race.bfId,
+              race.eventId,
+            race.marketId,
+
+            ]" [queryParams]="{ o: true }"><span class="time">{{race.startTime | date: "HH:mm"
+                  }}</span><span class="horse">{{race.name}}</span></a></li>
+          </ng-container>
+        </ul>
+      </div>
+      <div class="widget">
+        <div class="widget-header"><span class="widget-caption carbon" style="display: flex; align-items: center;"><span
+              class="icn-colorfull icn-colorfull-horse"></span><span style="margin-left: 5px;"><strong>Upcoming
+                Greyhound
+                Racing <img src="https://images.staticcontent.io/casino/banner/images/dog.svg"
+                  class="horsehomeimg"></strong></span></span>
+        </div>
+        <ul class="nav nav-tabs" style="display: flex;overflow-x: auto;overflow-y: hidden;">
+          <ng-container *ngFor="let race of nextgreyRaces;let i =index">
+            <li><a [routerLink]="[
+            '/full-market',
+            4339.1,
+            race.bfId,
+            race.eventId,
+            race.marketId,
+        
+          ]" [queryParams]="{ o: true }"><span class="time">{{race.startTime | date: "HH:mm"
+                  }}</span><span class="horse">{{race.name}}</span></a></li>
+          </ng-container>
+        </ul>
+      </div>
+
+
+      <div class="widget">
+        <div class="widget-header"><span class="widget-caption carbon" style="display: flex; align-items: center;"><span
+              class="icn-colorfull icn-colorfull-horse"></span><span style="margin-left: 5px;"><strong>Sport
+                Highlights</strong></span></span>
+        </div>
+
+        <div class="widget-body widget-body-main">
+          <ul class="nav nav-tabs nav-justified" data-tabs="tabs" id="tabs">
+            <ng-container *ngFor="let data of sportList">
+              <li (click)="selectTab(data.id, data.bfId)" [class.active]="activatedTab === data.id">
+                <a><img class="icon-img icon-{{ data.name | lowercase }}" src="assets/images/transparent.gif"
+                    alt="transparent" alt="{{ data.name | titlecase }}" />{{data.name}}</a>
+              </li>
+            </ng-container>
+            <!-- <li (click)="selectTab(2, 1)" [class.active]="activatedTab === 2">
+              <a>Soccer</a>
+            </li>
+            <li (click)="selectTab(3, 2)" [class.active]="activatedTab === 3">
+              <a>Tennis</a>
+            </li>
+            <li (click)="selectTab(4, 52)" [class.active]="activatedTab === 4">
+              <a>Kabaddi</a>
+            </li>
+            <li (click)="selectTab(6, 7522)" [class.active]="activatedTab === 6">
+              <a>American Football</a>
+            </li> -->
+            <!-- <div class="widget">
+              <div class="widget-header">
+                <span
+                  class="widget-caption carbon"
+                  style="display: flex; align-items: center"
+                  ><span class="icn-colorfull icn-colorfull-horse"></span
+                  ><span style="margin-left: 5px"
+                    ><strong>Today's Horse Racing Card</strong></span
+                  ></span
+                >
+              </div>
+              <ul class="nav nav-tabs">
+                <li *ngIf="horseLoading">
+                  <img
+                    style="height: 28px"
+                    src="assets/images/Spin-1.3s-55px.gif"
+                    alt=""
+                    srcset=""
+                  />
+                </li>
+                <li
+                  *ngFor="let tour of horseRaces"
+                  [class.active]="selectedTourHorse?.id == tour.id"
+                >
+                  <a (click)="selectItemHorse(tour)">
+                    <span [class]="tour.name"></span>
+                    <span style="width: 50px; margin-left: 24px">{{
+                      tour.name
+                    }}</span>
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content" *ngIf="selectedTourHorse">
+                <div
+                  class="tab-pane fade in"
+                  [id]="selectedTourHorse.name"
+                  [class.active]="selectedTourHorse"
+                >
+                  <div
+                    *ngFor="let venue of venuesHorse"
+                    class="race-card-wrapper"
+                    style="padding: 0px 0px 0px 10px"
+                  >
+                    <div class="race-card-meeting">
+                      <span>{{ venue.name }} </span>
+                    </div>
+                    <div class="race-card-races">
+                      <ul>
+                        <li *ngFor="let market of venue.markets">
+                          <a
+                            [routerLink]="[
+                              '/full-market',
+                              7,
+                              selectedTourHorse.id,
+                              venue.id,
+                              market.bfId
+                            ]"
+                            [queryParams]="{ o: true }"
+                            >{{ market.startTime | date: "HH:mm" }}</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="widget">
+              <div class="widget-header">
+                <span
+                  class="widget-caption carbon"
+                  style="display: flex; align-items: center"
+                  ><span class="icn-colorfull icn-colorfull-horse"></span
+                  ><span style="margin-left: 5px"
+                    ><strong>Today's Greyhound Racing Card</strong></span
+                  ></span
+                >
+              </div>
+              <ul class="nav nav-tabs">
+                <li *ngIf="greyLoading">
+                  <img
+                    style="height: 28px"
+                    src="assets/images/Spin-1.3s-55px.gif"
+                    alt=""
+                    srcset=""
+                  />
+                </li>
+                <li
+                  *ngFor="let tour of greyhoundRaces"
+                  [class.active]="selectedTourGreyhound?.id == tour.id"
+                >
+                  <a (click)="selectItemGreyhound(tour)">
+                    <span [class]="tour.name"></span>
+                    <span style="width: 50px; margin-left: 24px">{{
+                      tour.name
+                    }}</span>
+                  </a>
+                </li>
+              </ul>
+              <div class="tab-content" *ngIf="selectedTourGreyhound">
+                <div
+                  class="tab-pane fade in"
+                  [id]="selectedTourGreyhound.name"
+                  [class.active]="selectedTourGreyhound"
+                >
+                  <div
+                    *ngFor="let venue of venuesGrey"
+                    class="race-card-wrapper"
+                    style="padding: 0px 0px 0px 10px"
+                  >
+                    <div class="race-card-meeting">
+                      <span>{{ venue.name }} </span>
+                    </div>
+                    <div class="race-card-races">
+                      <ul>
+                        <li *ngFor="let market of venue.markets">
+                          <a
+                            [routerLink]="[
+                              '/full-market',
+                              4339,
+                              selectedTourGreyhound.id,
+                              venue.id,
+                              market.bfId
+                            ]"
+                            [queryParams]="{ o: true }"
+                            >{{ market.startTime | date: "HH:mm" }}</a
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <!--<li (click)="selectTab(4)" [class.active]="activatedTab === 4">
+              <a>Rugby Union</a>
+            </li>
+
+            <li (click)="selectTab(5)" [class.active]="activatedTab === 5">
+              <a>American Football</a>
+            </li>-->
+          </ul>
+          <div id="slimScrollDiv" style="overflow: hidden; width: auto">
+            <div class="tab-content" id="tabContent" style="width: auto">
+              <div>
+                <!-- <img src="assets/images/ajax-loader.gif" id="preloaderCricket" alt="Loading..." /> -->
+                <div class="table-responsive">
+                  <table cellspacing="2" class="marketview-main hidemob" border="0" id="tblCricket"
+                    *ngIf="Highlightlist?.length != 0">
+                    <tr style="text-align: center; font-weight: bold">
+                      <td></td>
+                      <td colspan="2">1</td>
+                      <td colspan="2">Χ</td>
+                      <td colspan="2">2</td>
+                    </tr>
+                    <ng-container *ngFor="
+                        let item of Highlightlist | sortByDate:'matchDate';
+                        trackBy: trackByMatchId;
+                        let $index = index
+                      ">
+                      <tr>
+                        <td class="runner-name" style="height: auto; width: 63%; font-weight: bold">
+                          <span>
+                            <span class="runner-meta">
+                              <span>
+                                <i class="badge badge-palegreen badge-empty margin-5 in-play"
+                                  *ngIf="item.inPlay == 1">&nbsp;</i>
+                                <i class="badge badge-empty margin-5" *ngIf="item.inPlay != 1">&nbsp;</i>
+                                <a [routerLink]="[
+                                    '/full-market',
+                                    item.SportbfId,
+                                    item.TourbfId,
+                                    item.matchId,
+                                    item.bfId
+                                  ]">
+                                  {{ item.matchName }}
+                                </a>
+                              </span>
+                            </span>
+
+                            <span class="start-date">
+                              {{ item.matchDate | date: "YYYY-MM-dd HH:mm:ss" }}
+                            </span>
+                          </span>
+                        </td>
+                        <td>
+                          <button class="back">
+                            <a id="hback1_{{ $index }}" class="odds" data-side="Back">{{
+                              matchDataHome[item.matchId]?.runners[0]
+                              ?.backPrice == null ||
+                              matchDataHome[item.matchId]?.runners[0]
+                              ?.backPrice == ""
+                              ? "-"
+                              : matchDataHome[item.matchId]?.runners[0]
+                              ?.backPrice
+                              }}</a>
+                          </button>
+                        </td>
+                        <td>
+                          <button class="lay">
+                            <a id="hlay1_{{ $index }}" class="odds" data-side="Lay">{{
+                              matchDataHome[item.matchId]?.runners[0]
+                              ?.layPrice == null ||
+                              matchDataHome[item.matchId]?.runners[0]
+                              ?.layPrice == ""
+                              ? "-"
+                              : matchDataHome[item.matchId]?.runners[0]
+                              ?.layPrice
+                              }}</a>
+                          </button>
+                        </td>
+                        <td>
+                          <button class="back">
+                            <a id="hback3_{{ $index }}" class="odds" data-side="Back">{{
+                              matchDataHome[item.matchId]?.runners[2]
+                              ?.backPrice == null ||
+                              matchDataHome[item.matchId]?.runners[2]
+                              ?.backPrice == ""
+                              ? "-"
+                              : matchDataHome[item.matchId]?.runners[2]
+                              ?.backPrice
+                              }}</a>
+                          </button>
+                        </td>
+                        <td>
+                          <button class="lay">
+                            <a id="hlay3_{{ $index }}" class="odds" data-side="Lay">{{
+                              matchDataHome[item.matchId]?.runners[2]
+                              ?.layPrice == null ||
+                              matchDataHome[item.matchId]?.runners[2]
+                              ?.layPrice == ""
+                              ? "-"
+                              : matchDataHome[item.matchId]?.runners[2]
+                              ?.layPrice
+                              }}</a>
+                          </button>
+                        </td>
+                        <td>
+                          <button class="back">
+                            <a id="hback2_{{ $index }}" class="odds" data-side="Back">{{
+                              matchDataHome[item.matchId]?.runners[1]
+                              ?.backPrice == null ||
+                              matchDataHome[item.matchId]?.runners[1]
+                              ?.backPrice == ""
+                              ? "-"
+                              : matchDataHome[item.matchId]?.runners[1]
+                              ?.backPrice
+                              }}</a>
+                          </button>
+                        </td>
+                        <td>
+                          <button class="lay">
+                            <a id="hlay2_{{ $index }}" class="odds" data-side="Lay">{{
+                              matchDataHome[item.matchId]?.runners[1]
+                              ?.layPrice == null ||
+                              matchDataHome[item.matchId]?.runners[1]
+                              ?.layPrice == ""
+                              ? "-"
+                              : matchDataHome[item.matchId]?.runners[1]
+                              ?.layPrice
+                              }}</a>
+                          </button>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td class="status-overlay" colspan="6">
+                          <span *ngIf="
+                              matchDataHome[item.matchId]?.status != 'OPEN'
+                            ">
+                            {{ matchDataHome[item.matchId]?.status }}
+                          </span>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </table>
+                  <div class="widget-body hideweb">
+                    <img src="assets/images/ajax-loader.gif" id="preloaderCricket" alt="Loading..."
+                      style="display: none" />
+                    <table cellspacing="2" class="marketview-main1" border="0" id="tblCricket"
+                      *ngIf="Highlightlist?.length">
+                      <tr style="text-align: center; font-weight: bold" class="hidemob">
+                        <td></td>
+                        <td colspan="2">1</td>
+                        <td colspan="2">Χ</td>
+                        <td colspan="2">2</td>
+                      </tr>
+                      <ng-container *ngFor="
+                          let item of Highlightlist | sortByDate:'matchDate';
+                          let $index = index;
+                          trackBy: trackByFn
+                        ">
+                        <div class="game-list pt-1 pb-1 container-fluid">
+                          <div class="row row5">
+                            <div class="col-8">
+                              <td class="mb-0 game-name" style="">
+                                <span>
+                                  <span>
+                                    <i class="badge badge-palegreen badge-empty margin-5 in-play"
+                                      *ngIf="item.inPlay == 1">&nbsp;</i>
+                                    <i class="badge badge-empty margin-5" *ngIf="item.inPlay != 1">&nbsp;</i>
+                                    <a *ngIf="selectedSportId !=10" [routerLink]="[
+                                    '/full-market',
+                                    item.SportbfId,
+                                    item.TourbfId,
+                                    item.matchId,
+                                    item.bfId
+                                  ]">
+                                      {{ item.matchName }}
+                                    </a>
+
+                                    <a *ngIf="selectedSportId ==10" [routerLink]="[
+                                '/full-market/teenpatti'
+                              ]" [queryParams]="{tableName: item.tableName, tableId: item.tableId, streamServer: casinoData?.streamServer, streamUrl: item.streamUrl, oddServer1: casinoData?.oddServer1, oddServer2: casinoData?.oddServer2, oddsUrl: item.oddsUrl, resultUrl: item.resultUrl}">{{
+                                      item.tableName }}</a>
+                                  </span>
+                                </span>
+                                <br>
+                                <span class="start-date">
+                                  {{ item.matchDate | date: "YYYY-MM-dd HH:mm:ss" }}
+                                </span>
+                              </td>
+                            </div>
+                          </div>
+                          <div class="row row5">
+                            <div class="col-12">
+                              <div class="text-center game-col game-home"><b>1</b></div>
+                              <div class="text-center game-col game-home"><b>X</b></div>
+                              <div class="text-center game-col game-home"><b>2</b></div>
+                            </div>
+                          </div>
+                          <div class="row row5">
+                            <div class="col-8">
+                              <td>
+                                <button class="back">
+                                  <a id="hback1_{{ $index }}" class="odds" data-side="Back">{{
+                                    matchDataHome[item.matchId]?.runners[0]?.backPrice ==
+                                    null ||
+                                    matchDataHome[item.matchId]?.runners[0]?.backPrice == ""
+                                    ? "-"
+                                    : matchDataHome[item.matchId]?.runners[0]?.backPrice
+                                    }}</a>
+                                </button>
+                              </td>
+                              <td>
+                                <button class="lay">
+                                  <a id="hlay1_{{ $index }}" class="odds" data-side="Lay">{{
+                                    matchDataHome[item.matchId]?.runners[0]?.layPrice ==
+                                    null ||
+                                    matchDataHome[item.matchId]?.runners[0]?.layPrice == ""
+                                    ? "-"
+                                    : matchDataHome[item.matchId]?.runners[0]?.layPrice
+                                    }}</a>
+                                </button>
+                              </td>
+                              <td>
+                                <button class="back">
+                                  <a id="hback3_{{ $index }}" class="odds" data-side="Back">{{
+                                    matchDataHome[item.matchId]?.runners[2]?.backPrice ==
+                                    null ||
+                                    matchDataHome[item.matchId]?.runners[2]?.backPrice == ""
+                                    ? "-"
+                                    : matchDataHome[item.matchId]?.runners[2]?.backPrice
+                                    }}</a>
+                                </button>
+                              </td>
+                              <td>
+                                <button class="lay">
+                                  <a id="hlay3_{{ $index }}" class="odds" data-side="Lay">{{
+                                    matchDataHome[item.matchId]?.runners[2]?.layPrice ==
+                                    null ||
+                                    matchDataHome[item.matchId]?.runners[2]?.layPrice == ""
+                                    ? "-"
+                                    : matchDataHome[item.matchId]?.runners[2]?.layPrice
+                                    }}</a>
+                                </button>
+                              </td>
+                              <td>
+                                <button class="back">
+                                  <a id="hback2_{{ $index }}" class="odds" data-side="Back">{{
+                                    matchDataHome[item.matchId]?.runners[1]?.backPrice ==
+                                    null ||
+                                    matchDataHome[item.matchId]?.runners[1]?.backPrice == ""
+                                    ? "-"
+                                    : matchDataHome[item.matchId]?.runners[1]?.backPrice
+                                    }}</a>
+                                </button>
+                              </td>
+                              <td>
+                                <button class="lay">
+                                  <a id="hlay2_{{ $index }}" class="odds" data-side="Lay">{{
+                                    matchDataHome[item.matchId]?.runners[1]?.layPrice ==
+                                    null ||
+                                    matchDataHome[item.matchId]?.runners[1]?.layPrice == ""
+                                    ? "-"
+                                    : matchDataHome[item.matchId]?.runners[1]?.layPrice
+                                    }}</a>
+                                </button>
+                              </td>
+                            </div>
+                          </div>
+                        </div>
+                      </ng-container>
+                    </table>
+                    <table cellspacing="2" class="marketview-main" border="0" id="tblTennis"
+                      *ngIf="Highlightlist?.length == 0">
+                      <tbody>
+                        <tr>
+                          <td>No match found!</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="tbRugby">
+                <img src="assets/images/ajax-loader.gif" id="preloaderRugby" alt="Loading..." />
+                <div class="table-responsive">
+                  <table cellspacing="2" class="marketview-main" border="0" id="tblRugby">
+                    <tbody>
+                      <tr>
+                        <td><br />No match found!</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="tab-pane" id="tbAmericanFootball">
+                <div class="table-responsive">
+                  <table cellspacing="2" class="marketview-main" border="0" id="tblAmericanFootball">
+                    <tbody>
+                      <tr>
+                        <td><br />No match found!</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content" id="tabContent">
+            <div class="tab-pane" id="tbCricket" *ngIf="activatedTab === 1">
+              <div class="table-responsive">
+                <table cellspacing="2" class="marketview-main" border="0" id="tblCricket">
+                  <tr>
+                    <td><br />No match found!</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="tbSoccer" *ngIf="activatedTab === 2">
+              <div class="table-responsive">
+                <table cellspacing="2" class="marketview-main" border="0" id="tblSoccer">
+                  <tr>
+                    <td><br />No match found!</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="tbTennis" *ngIf="activatedTab === 3">
+              <div class="table-responsive">
+                <table cellspacing="2" class="marketview-main" border="0" id="tblTennis">
+                  <tr>
+                    <td><br />No match found!</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="tbKabaddi" *ngIf="activatedTab === 4">
+              <div class="table-responsive">
+                <table cellspacing="2" class="marketview-main" border="0" id="tblKabaddi">
+                  <tr>
+                    <td><br />No match found!</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="tab-pane" id="tbRugby" *ngIf="activatedTab === 4">
+              <div class="table-responsive">
+                <table cellspacing="2" class="marketview-main" border="0" id="tblRugby">
+                  <tr>
+                    <td><br />No match found!</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tbAmericanFootball" *ngIf="activatedTab === 5">
+              <div class="table-responsive">
+                <table cellspacing="2" class="marketview-main" border="0" id="tblAmericanFootball">
+                  <tr>
+                    <td><br />No match found!</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="right_col" role="main">
+        <div class="wrapper mt-2 diamond-casino-container">
+
+
+          <div class="card">
+            <div class="row mt-2" style="display: block;">
+              <div class="col-md-12">
+                <h4 class="casino-title mb-0">
+                  <div class="arrows-left arrows"><span></span></div>
+                  ELECTION 2023
+                  <div class="arrows-right arrows"><span></span></div>
+                </h4>
+              </div>
+
+              <div class="col-md-12 col-xs-12 inner-img hideweb">
+
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/full-market/85/2107191733/1702261800/1.170226180000">
+                    <div class="casino-icons"><img src="assets/images/banner/election.png" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>Election</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="right_col" role="main">
+        <div class="wrapper mt-2 diamond-casino-container">
+          <div class="card">
+            <div class="row mt-2" style="display: block;">
+              <div class="col-md-12 col-xs-12 inner-img hideweb">
+                <div class="right_col" role="main">
+                  <div class="wrapper mt-2 diamond-casino-container">
+
+
+                    <div class="card">
+                      <div class="row mt-2" style="display: block;">
+                        <div class="col-md-12">
+                          <h4 class="casino-title mb-0">
+                            <div class="arrows-left arrows"><span></span></div>
+                            INTERNATIONAL CASINO
+                            <div class="arrows-right arrows"><span></span></div>
+                          </h4>
+                        </div>
+
+                        <!-- <ng-container *ngIf="isInrCurrency">
+                          <div class="col-md-2 col-xs-6 inner-img" *ngFor="let awc of awcCasinoList_Vnd">
+              
+                            <div class="casino-box casinoicons">
+                              <a (click)="awc_login_direct(awc.prod_code,awc.prod_type,awc.prod_name,awc.game_code)">
+                                <div class="casino-icons"><img src="assets/awc_poster/{{awc.name}}.png" class="img-fluid">
+              
+                                </div>
+              
+                                  <dl  class="entrance-title">
+                                  <dt >{{awc.name | titlecase}}</dt>
+                                  <dd ><span>PLay Now</span></dd>
+                                </dl>
+                              </a>
+                            </div>
+              
+                          </div>
+                        </ng-container> -->
+
+                      </div>
+
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <ng-container *ngIf="isInrCurrency">
+                  <div class="casino-box casinoicons" style="margin-bottom: 15px;"
+                    *ngFor="let awc of awcCasinoList_Vnd">
+                    <a (click)="awc_login_direct(awc.prod_code,awc.prod_type,awc.prod_name,awc.game_code)">
+                      <div class="casino-icons"><img src="assets/awc_poster/{{awc.name}}.png" class="img-fluid">
+
+                      </div>
+
+                      <dl class="entrance-title">
+                        <dt>{{awc.name | titlecase}}</dt>
+                        <dd><span>PLay Now</span></dd>
+                      </dl>
+                    </a>
+                  </div>
+                </ng-container> -->
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/supernova/AWC">
+                    <div class="casino-icons"><img src="assets/images/banner/AE Sexy.png" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>AE Sexy</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/slotgame/3000">
+                    <div class="casino-icons"><img src="assets/awc_poster/Sportbook.png" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>Sportbook</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/betgame">
+                    <div class="casino-icons"><img src="assets/images/banner/betgame.jpg" class="img-fluid">
+                    </div>
+                    <dl class="entrance-title">
+                      <dt>Betgame</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/twain">
+                    <div class="casino-icons"><img src="assets/images/banner/twain.jpg" class="img-fluid">
+                    </div>
+                    <dl class="entrance-title">
+                      <dt>Twain</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/supernova/SN">
+                    <div class="casino-icons"><img src="assets/images/banner/SN.jpeg" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>Supernowa</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/supernova/EZ">
+                    <div class="casino-icons"><img src="assets/images/banner/EZUGI.png" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>EJUGI</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/poker">
+                    <div class="casino-icons"><img src="assets/images/banner/poker.png" class="img-fluid">
+                    </div>
+                    <dl class="entrance-title">
+                      <dt>Poker</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/slot-list">
+                    <div class="casino-icons"><img src="assets/images/banner/slots.jpg" class="img-fluid">
+                    </div>
+                    <dl class="entrance-title">
+                      <dt>Slots</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/aman">
+                    <div class="casino-icons"><img src="assets/images/banner/Indian casino.png" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>AURA Casino</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/sports/inplay">
+                    <div class="casino-icons"><img src="assets/images/banner/banner_sports.png" class="img-fluid">
+                    </div>
+                    <dl class="entrance-title">
+                      <dt>Sports</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <!-- <div class="widget">
+        <div class="widget-header">
+          <span
+            class="widget-caption carbon"
+            style="display: flex; align-items: center"
+            ><span class="icn-colorfull icn-colorfull-horse"></span
+            ><span style="margin-left: 5px"
+              ><strong>Today's Horse Racing Card</strong></span
+            ></span
+          >
+        </div>
+        <ul class="nav nav-tabs">
+          <li *ngIf="horseLoading">
+            <img
+              style="height: 28px"
+              src="assets/images/Spin-1.3s-55px.gif"
+              alt=""
+              srcset=""
+            />
+          </li>
+          <li
+            *ngFor="let tour of horseRaces"
+            [class.active]="selectedTourHorse?.id == tour.id"
+          >
+            <a (click)="selectItemHorse(tour)">
+              <span [class]="tour.name"></span>
+              <span style="width: 50px; margin-left: 24px">{{
+                tour.name
+              }}</span>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content" *ngIf="selectedTourHorse">
+          <div
+            class="tab-pane fade in"
+            [id]="selectedTourHorse.name"
+            [class.active]="selectedTourHorse"
+          >
+            <div
+              *ngFor="let venue of venuesHorse"
+              class="race-card-wrapper"
+              style="padding: 0px 0px 0px 10px"
+            >
+              <div class="race-card-meeting">
+                <span>{{ venue.name }} </span>
+              </div>
+              <div class="race-card-races">
+                <ul>
+                  <li *ngFor="let market of venue.markets">
+                    <a
+                      [routerLink]="[
+                        '/full-market',
+                        7,
+                        selectedTourHorse.id,
+                        venue.id,
+                        market.bfId
+                      ]"
+                      [queryParams]="{ o: true }"
+                      >{{ market.startTime | date: "HH:mm" }}</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="widget">
+        <div class="widget-header">
+          <span
+            class="widget-caption carbon"
+            style="display: flex; align-items: center"
+            ><span class="icn-colorfull icn-colorfull-horse"></span
+            ><span style="margin-left: 5px"
+              ><strong>Today's Greyhound Racing Card</strong></span
+            ></span
+          >
+        </div>
+        <ul class="nav nav-tabs">
+          <li *ngIf="greyLoading">
+            <img
+              style="height: 28px"
+              src="assets/images/Spin-1.3s-55px.gif"
+              alt=""
+              srcset=""
+            />
+          </li>
+          <li
+            *ngFor="let tour of greyhoundRaces"
+            [class.active]="selectedTourGreyhound?.id == tour.id"
+          >
+            <a (click)="selectItemGreyhound(tour)">
+              <span [class]="tour.name"></span>
+              <span style="width: 50px; margin-left: 24px">{{
+                tour.name
+              }}</span>
+            </a>
+          </li>
+        </ul>
+        <div class="tab-content" *ngIf="selectedTourGreyhound">
+          <div
+            class="tab-pane fade in"
+            [id]="selectedTourGreyhound.name"
+            [class.active]="selectedTourGreyhound"
+          >
+            <div
+              *ngFor="let venue of venuesGrey"
+              class="race-card-wrapper"
+              style="padding: 0px 0px 0px 10px"
+            >
+              <div class="race-card-meeting">
+                <span>{{ venue.name }} </span>
+              </div>
+              <div class="race-card-races">
+                <ul>
+                  <li *ngFor="let market of venue.markets">
+                    <a
+                      [routerLink]="[
+                        '/full-market',
+                        4339,
+                        selectedTourGreyhound.id,
+                        venue.id,
+                        market.bfId
+                      ]"
+                      [queryParams]="{ o: true }"
+                      >{{ market.startTime | date: "HH:mm" }}</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="right_col" role="main">
+        <div class="wrapper mt-2 diamond-casino-container">
+
+
+          <div class="card">
+            <div class="row mt-2" style="display: block;">
+              <div class="col-md-12">
+                <h4 class="casino-title mb-0">
+                  <div class="arrows-left arrows"><span></span></div>
+                  LIVE CASINOS + SLOTS
+                  <div class="arrows-right arrows"><span></span></div>
+                </h4>
+              </div>
+
+              <div class="col-md-12 col-xs-12 inner-img hideweb">
+
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/slot-list">
+                    <div class="casino-icons"><img src="assets/images/banner/slots.jpg" class="img-fluid">
+
+                    </div>
+
+                    <dl  class="entrance-title">
+                      <dt >Slots</dt>
+                      <dd ><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+
+              </div>
+              <div class="col-md-2 col-xs-6 inner-img" *ngFor="let sn of snGameAssetsAll">
+
+                <div class="casino-box casinoicons">
+                  <a routerLink="/supernova-game/{{sn.providerCode}}/{{sn.code}}">
+                    <div class="casino-icons"><img [src]="sn.thumb" class="img-fluid">
+
+                    </div>
+
+                    <dl  class="entrance-title">
+                      <dt >{{sn.name}}</dt>
+                      <dd ><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div> -->
+      <div class="right_col" role="main">
+        <div class="wrapper mt-2 diamond-casino-container">
+
+
+          <div class="card">
+            <div class="row mt-2" style="display: block;">
+              <div class="col-md-12">
+                <h4 class="casino-title mb-0">
+                  <div class="arrows-left arrows"><span></span></div>
+                  AURA
+                  <div class="arrows-right arrows"><span></span></div>
+                </h4>
+              </div>
+
+              <div class="col-md-12 col-xs-12 inner-img hideweb">
+
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/aman">
+                    <div class="casino-icons"><img src="assets/images/banner/indian_casino.jpg" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>Indian Casino</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+
+              </div>
+
+              <div class="col-md-12" style="padding-top: 10px;">
+                <div class="col-md-2 col-xs-6 inner-img" *ngFor="let casino of casinoListlist">
+                  <div class="casino-box casinoicons"><a routerLink="/tpp/{{casino.opentable}}">
+                      <div class="casino-icons"><img class="img-fluid" src="assets/aman/{{casino.tableName}}.png">
+                      </div>
+                      <dl class="entrance-title">
+                        <dt>{{casino.CasinoName}}</dt>
+                        <dd>PLay Now</dd>
+                      </dl>
+                    </a></div>
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="right_col" role="main">
+        <div class="wrapper mt-2 diamond-casino-container">
+
+
+          <div class="card">
+            <div class="row mt-2" style="display: block;">
+              <div class="col-md-12">
+                <h4 class="casino-title mb-0">
+                  <div class="arrows-left arrows"><span></span></div>
+                  EXCH CASINOS
+                  <div class="arrows-right arrows"><span></span></div>
+                </h4>
+              </div>
+
+              <div class="col-md-12 col-xs-12 inner-img hideweb">
+
+                <div class="casino-box casinoicons" style="margin-bottom: 15px;">
+                  <a routerLink="/supernova/SN">
+                    <div class="casino-icons"><img src="assets/images/banner/banner_casino.jpg" class="img-fluid">
+
+                    </div>
+
+                    <dl class="entrance-title">
+                      <dt>Our Live Casino</dt>
+                      <dd><span>PLay Now</span></dd>
+                    </dl>
+                  </a>
+                </div>
+
+              </div>
+
+              <div class="col-md-12">
+                <div class="col-md-2 col-xs-6 inner-img" *ngFor="let item of Highlightlists;trackBy: trackByFn">
+
+                  <div class="casino-box casinoicons">
+                    <a [routerLink]="['/full-market/teenpatti']"
+                      [queryParams]="{tableName: item.tableName, tableId: item.tableId, streamServer: casinoData?.streamServer, streamUrl: item.streamUrl, oddServer1: casinoData?.oddServer1, oddServer2: casinoData?.oddServer2, oddsUrl: item.oddsUrl, resultUrl: item.resultUrl}">
+                      <div class="casino-icons"><img src="assets/tpimages/{{item.tableName}}.jpg" class="img-fluid">
+
+                      </div>
+
+                      <dl class="entrance-title">
+                        <dt>{{item.tableName}}</dt>
+                        <dd><span>PLay Now</span></dd>
+                      </dl>
+                    </a>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>

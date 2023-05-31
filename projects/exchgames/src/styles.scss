@@ -1,0 +1,149 @@
+/* You can add global styles to this file, and also import other style files */
+@import "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css";
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
+@import "./assets/styles/sb-admin.css";
+@import "~ngx-toastr/toastr";
+
+.navbar-brand {
+  height: 48px;
+}
+
+.Turbo_Text {
+  animation-name: blinker;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+@keyframes blinker {
+  0% {
+    color: white;
+  }
+
+  100% {
+    color: yellow;
+  }
+}
+
+body {
+  // background-color: #303030 !important;
+  background-color: var(--secondary-bg) !important;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.card-deck .card {
+  min-width: 220px;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 18%) !important;
+  // border: 1px solid rgba(0,0,0,0.2);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+
+}
+
+.nav-head {
+  background: #ffc53d;
+  background-color: #ffc53d;
+  // background-image: url("../../../src/assets/images/bg-pattern.png");
+  // background-image: url("../../../src/assets/images/bg-pattern.png"), linear-gradient(#a8e2ff, #b0e5ff);
+  // background-image: linear-gradient(#c5ecff, #c9edff);
+}
+.btn-primary {
+  font-weight: 700;
+  color: #000 !important;
+  background-color: #ffc53d;
+  border-color: #ffc53d;
+}
+
+.btn-dark:hover {
+  color: #fff;
+  background-color: #ffc53d;
+  border-color: #ffc53d;
+}
+
+.nav-head a {
+  color: #303030;
+}
+
+.fa-bars:before {
+  content: "\f0c9";
+  color: black;
+}
+
+.nav-head a:hover {
+  color: #000;
+}
+
+.img-bottom-margin {
+  margin-bottom: 20px !important;
+}
+
+.inlineWrapper td {
+  border: 0px !important;
+}
+
+.inlineWrapper input[type="number"] {
+  width: 150px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  height: 30px;
+}
+
+.inlineWrapper span {
+  margin: 10px;
+}
+
+.inlineWrapper input[type="button"] {
+  -webkit-border-radius: 0px;
+}
+
+.inlineDiv {
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.inlineDiv span {
+  flex: 1;
+  margin-left: 5px;
+}
+footer {
+  bottom: 0;
+}
+
+// @media (min-width: 992px) {
+//   #div1 {
+//     padding-top: 56px;
+//   }
+// }
+
+// body #div1 {
+//   padding-top: 54px;
+// }
+
+.card-deck .card {
+  min-width: 220px;
+}
+
+.table td,
+.table th {
+  padding: 0;
+}
+
+.fixed-top {
+  padding: 0;
+}
+
+.dropdown-menu {
+  left: auto;
+}

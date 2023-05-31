@@ -1,0 +1,289 @@
+<style>
+  #ctl00_MasterContentPlaceHolder_ReportViewer1_fixedTable {
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+</style>
+<div>
+  <div class="row">
+    <div class="col-lg-3 col-sm-3">
+      <label> Start Date:</label>
+      <div class="input-group" id="startDateBox">
+        <input
+          type="text"
+          placeholder="from"
+          class="form-control"
+          bsDatepicker
+          [minDate]="month"
+          [maxDate]="toDate"
+          [(bsValue)]="fromDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-3">
+      <label> End Date:</label>
+      <div class="input-group" id="endDateBox">
+        <input
+          type="text"
+          placeholder="to"
+          class="form-control"
+          bsDatepicker
+          [minDate]="fromDate"
+          [maxDate]="toDate"
+          [(bsValue)]="toDate"
+          [bsConfig]="{
+            dateInputFormat: 'DD-MM-Y HH:mm:ss',
+            containerClass: 'theme-blue'
+          }"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-3">
+      <label>&nbsp;</label><br />
+      <a class="btn btn-blue" (click)="getProfitLoss()">Load Report</a>
+    </div>
+  </div>
+  <hr />
+  <div class="widget Pl" *ngIf="!selectedSportPnl">
+    <div class="widget-header">
+      <div class="btn-group pull-left" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle"
+                aria-controls="dropdown-basic">
+                <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="button-basic">
+          <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'xml'">XML</a></li>
+          <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'csv'">CSV</a></li>
+          <li role="menuitem"><a class="dropdown-item" [appExportData]="'no-more-tables'" [type]="'xls'">MS-Excel</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget-body">
+      <!-- <div class="rptPreloader" style="">
+        <img src="./assets/img/squares.gif" alt="loading..." />
+      </div> -->
+      <div class="table-responsive">
+        <table
+          id="no-more-tables"
+          class="table table-condensed table table-bordered table-hover table-striped"
+        >
+          <thead>
+            <tr>
+              <!-- <th style="display: none">Event Type ID</th> -->
+              <th>Event Name</th>
+              <th>Profit/Loss</th>
+            </tr>
+          </thead>
+          <tbody data-ng-if="sportNames.length!=0">
+            <tr *ngFor="let sport of sportWisePnl; let $index = index">
+              <!-- <td data-title="Event Type ID" style="display: none">4</td> -->
+              <td data-title="Event Name">
+                <a
+                  (click)="openDetail(sport)"
+                  class="pointer"
+                  >{{ sport.sportName | titlecase}}</a
+                >
+              </td>
+              <td data-title="Profit/Loss"
+                class="amnt toSum"
+                [ngClass]="{'negative': sport.totalPL<0, 'positive': sport.totalPL>=0}"
+              >
+                {{ sport.totalPL | indianCurrency}}
+              </td>
+            </tr>
+
+            <tr class="hidden-xs">
+              <td data-title="To" colspan="1">Total:</td>
+              <td data-title=""
+                id="total"
+                class="amnt"
+                [ngClass]="{'negative':sportWiseTotal<0, 'positive':sportWiseTotal>=0}"
+              >
+                {{ sportWiseTotal | indianCurrency }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="widget PlMarketWise" *ngIf="selectedSportPnl && !selectedMarketPnl">
+    <div class="widget-header">
+      <div class="btn-group pull-left">
+        <button
+          type="button"
+          (click)="getPreviousPage()"
+          class="btn btn-default"
+        >
+          <i class="fa fa-arrow-circle-left"></i>
+        </button>
+        <button
+          aria-expanded="false"
+          class="btn btn-default dropdown-toggle"
+          data-toggle="dropdown"
+          type="button"
+        >
+          <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li data-type="xml">
+            <a onclick="tExport('xml','tblPlMarkets','Profit-or-Loss')">XML</a>
+          </li>
+          <li data-type="csv">
+            <a onclick="tExport('csv','tblPlMarkets','Profit-or-Loss')">CSV</a>
+          </li>
+          <li data-type="excel">
+            <a onclick="tExport('excel','tblPlMarkets','Profit-or-Loss')"
+              >MS-Excel</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget-body">
+      <!-- <div class="rptPreloader" style="">
+        <img src="./assets/img/squares.gif" alt="loading..." />
+      </div> -->
+      <div class="table-responsive" id="no-more-tables">
+        <table
+          id="no-more-tables"
+          class="table table-condensed table table-bordered table-hover table-striped"
+        >
+          <thead>
+            <tr>
+              <th style="display: none">Event Type ID</th>
+              <th>Setteld Date</th>
+              <th>Market ID</th>
+              <th>Market Name</th>
+              <th>Profit/Loss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pnl of selectedSportPnl.markets">
+              <td data-title="Event Type ID" id="typeId" style="display: none">4</td>
+              <td data-title="Setteld Date">{{pnl.settledDate | date}}</td>
+              <td data-title="Market ID">{{pnl.marketId.includes('_')? pnl.marketId.split('_')[1]: pnl.marketId}}</td>
+              <td data-title="Market Name">
+                <a (click)="openDetail(selectedSportPnl, pnl)"
+                  >{{pnl.sportName | titlecase}}/{{pnl.eventName}}/{{pnl.marketName}} </a
+                >
+              </td>
+              <td
+                data-title="Profit/Loss"
+                class="amnt toSum"
+                [ngClass]="{'negative':+pnl.netPL<0, 'positive':+pnl.netPL>=0}"
+                data-sum="-500.208"
+              >
+                {{pnl.netPL | indianCurrency}}
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="hidden-xs">
+              <td data-title="" colspan="3" style="text-align: right">Total:</td>
+              <td data-title="" class="amnt" [ngClass]="{'negative':marketTotal<0, 'positive':marketTotal>=0}" id="totals">{{marketTotal | indianCurrency}} </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="widget PlBetWise" *ngIf="selectedMarketPnl">
+    <div class="widget-header">
+      <div class="btn-group pull-left">
+        <button
+          (click)="getPreviousPage(selectedSportPnl, selectedMarketPnl)"
+          type="button"
+          class="btn btn-default"
+        >
+          <i class="fa fa-arrow-circle-left"></i>
+        </button>
+        <button
+          aria-expanded="false"
+          class="btn btn-default dropdown-toggle"
+          data-toggle="dropdown"
+          type="button"
+        >
+          <i class="glyphicon glyphicon-save"></i> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li data-type="xml">
+            <a onclick="tExport('xml','tblPlBetWise','Profit-or-Loss')">XML</a>
+          </li>
+          <li data-type="csv">
+            <a onclick="tExport('csv','tblPlBetWise','Profit-or-Loss')">CSV</a>
+          </li>
+          <li data-type="excel">
+            <a onclick="tExport('excel','tblPlBetWise','Profit-or-Loss')"
+              >MS-Excel</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="widget-body">
+      <!-- <div class="rptPreloader" style="">
+        <img src="./assets/img/squares.gif" alt="loading..." />
+      </div> -->
+      <div class="table-responsive" id="no-more-tables-inner">
+        <table
+          id="no-more-tables"
+          class="table table-condensed table table-bordered table-hover table-striped"
+        >
+          <thead>
+            <tr>
+              <th>Bet ID</th>
+              <th>Placed Date</th>
+              <th>Runner Name</th>
+              <th>Avg Matched Price</th>
+              <th>Stake</th>
+              <th>Bet Type</th>
+              <th>Status</th>
+              <th>Profit/Loss</th>
+              <th>Commission</th>
+              <th>Net</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bet of selectedMarketPnl.bets">
+              <td data-title="Bet ID">{{bet.betId}}</td>
+              <td data-title="Placed Date">{{bet.betTime | date}}</td>
+              <td data-title="Runner Name">{{bet.selName}}</td>
+              <td data-title="Avg Matched Price">{{bet.odds}}</td>
+              <td data-title="Stake">{{bet.stake | indianCurrency}}</td>
+              <td data-title="Bet Type">{{bet.betType | titlecase}}</td>
+              <td data-title="Status">{{+bet.pl < 0? 'LOST': +bet.pl > 0? 'WON': ''}} </td>
+              <td data-title="Profit/Loss" [ngClass]="{'negative': +bet.pl < 0, 'positive': +bet.pl>=0}">{{bet.pl}}</td>
+              <td data-title="Commission" [ngClass]="{'negative': bet.commission <0, 'positive': bet.commission>=0}">{{bet.commission | indianCurrency}} </td>
+              <td data-title="Net" [ngClass]="{'negative': +bet.netPl<0, 'positive': +bet.netPl>=0}">{{bet.netPl | indianCurrency}} </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="hidden-xs">
+              <td data-title="Total" colspan="7" style="text-align: right">Total:</td>
+              <td data-title="Profit/Loss" class="amnt" [ngClass]="{'negative': +betwiseTotal.totalPL < 0, 'positive': +betwiseTotal.totalPL>=0}" id="plTotal">{{betwiseTotal.totalPL | indianCurrency}} </td>
+              <td data-title="Commission" class="amnt" [ngClass]="{'negative': +betwiseTotal.commission < 0, 'positive': +betwiseTotal.commission>=0}" id="comTotal">{{betwiseTotal.commission | indianCurrency}} </td>
+              <td data-title="Net" class="amnt" [ngClass]="{'negative': +betwiseTotal.netPL < 0, 'positive': +betwiseTotal.netPL>=0}" id="netTotal">{{betwiseTotal.netPL | indianCurrency}} </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

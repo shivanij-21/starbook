@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+.main-container {
+  strong {
+    font-family: "Montserrat", sans-serif;
+    font-size: 10px;
+
+    a {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.betfair {
+  height: 25px;
+}
+
+.phone .footer {
+  height: 48px;
+
+  .main-container {
+    strong {
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+  }
+
+  .betfair {
+    height: 38px;
+  }
+
+  .eighteen {
+    height: 38px;
+  }
+}
+
+.fa {
+  margin-right: 4px;
+}
+
+.powered-by {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+
+  p {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    border-bottom: 4px solid #c4930b;
+    padding-bottom: 4px;
+  }
+
+  .betfair {
+    border: 3px solid #1e1e1e;
+    border-radius: 4px;
+    margin: 0 8px;
+  }
+
+  .eitheen {
+    height: 48px; width: 48px;
+  }
+}

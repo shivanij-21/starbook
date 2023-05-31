@@ -1,0 +1,1078 @@
+.displayB,
+.delete,
+.btn,
+.btn-send,
+.pages a,
+.calendarTable_inputBox input,
+.calendarTable_inputBox textarea,
+.slip-wrap h3 a,
+.matched-wrap h3 a,
+.live-wrap h3 a,
+.tv-wrap h3 a,
+.game-wrap h3 a,
+.game-highlight-wrap h3 a,
+.game-wrap-horse h3 a,
+.favor-wrap h3 a,
+.sub_path h3 a,
+.slip-back dt:hover .full-amount,
+.slip-lay dt:hover .full-amount,
+.slip-back dd:hover .full-amount,
+.slip-lay dd:hover .full-amount,
+.btn-live,
+.btn-book,
+.account-wrap ul a,
+.more_drop-list a,
+.selection-list a,
+.fancy-suspend span,
+.fancy-suspend-white span,
+.power-wrap h3 img,
+.power-wrap-b img,
+.login-wrap .btn-login,
+.cricexch .login-wrap .btn-signup,
+.header a,
+.account-wrap li .refresh-bar,
+.account-wrap a,
+.language,
+.flag,
+.menu-wrap a,
+.menu li:hover ul,
+.setting-wrap li:hover ul,
+.menu-list a,
+.menu-list .Go,
+.favor-set,
+.path .path-back,
+.path-pop a,
+.short-amount,
+.odd-add a,
+.stake-popup a,
+.slider-bar span,
+.slider-bar a,
+.live:before,
+.load-pending strong,
+.favor,
+.kv-wrap a,
+.marquee-list li a,
+.tab-highlight a,
+.tab-markets a,
+.event-left .slip-head span,
+.event-right .slip-head span,
+.event-left .matched-head span,
+.event-right .matched-head span,
+.live-list a,
+.live-list a:after,
+.game-list-col dd a,
+.game-list-col dd a span,
+.game-list-col dd .info,
+.game-head a,
+.game-team .game-visit span,
+.game-scores .game-visit span,
+.game-team .game-home span,
+.game-scores .game-home span,
+.game-team .game-vs span,
+.game-scores .game-vs span,
+.game-scores ul .scores-box span,
+.game-progress:after,
+.sum-status,
+.score-pop:before,
+.score-pop-last:before,
+.tab-HS a,
+.bets td a,
+.bets-HS td a,
+.bets-GH td a,
+.bets td span,
+.bets-HS td span,
+.bets-GH td span,
+.more,
+.suspend span,
+.bets .suspend span,
+.bets-HS .suspend span,
+.bets-GH .suspend span,
+.line_markets-team .game-vs div:before,
+.line_markets-team .game-vs div:after,
+.line_market-name span,
+.quick_bet-wrap .btn span,
+.quick_bet-wrap .btn-send span,
+.quick_bet-wrap .pages a span,
+.pages .quick_bet-wrap a span,
+.quick_bet-wrap .calendarTable_inputBox input span,
+.calendarTable_inputBox .quick_bet-wrap input span,
+.quick_bet-wrap .calendarTable_inputBox textarea span,
+.calendarTable_inputBox .quick_bet-wrap textarea span,
+.game-fancy .info-inplay,
+.game-fancy.in-play:before,
+.fancy-head .in-play span:before,
+.fancy-info dt span,
+.sportsbook-head h4:after,
+.sportsbook-head .tc-content h5:after,
+.tc-content .sportsbook-head h5:after,
+.close_pop,
+.error-text,
+.go-back,
+.pop-close,
+.tab a,
+.expand-close,
+.expand-open,
+.selection,
+.initial-balance dt span,
+.final-balance dt span,
+.announce-footer .confirm-checkbox,
+.cricexch .support-wrap,
+.cricexch .power-wrap,
+.cricexch .policy-link,
+.cricexch .RnR-link {
+  display: block;
+}
+
+.float-L,
+.delete,
+.login-panel,
+.change_pass .login-panel,
+.change_pass .note,
+.slip-wrap .slip_set,
+.slip_refresh,
+.tv_popup,
+.slip-back dt,
+.slip-lay dt,
+.slip-back dt .slip-type,
+.slip-lay dt .slip-type,
+.slip-back dd,
+.slip-lay dd,
+.power-wrap h3,
+.login-wrap .btn-login,
+.cricexch .login-wrap .btn-signup,
+.kv,
+.header h1,
+.login-wrap input,
+.login-wrap textarea,
+.menu,
+.setting-wrap,
+.stake-set dd,
+.odds-set dd,
+.sum dt,
+.sum dd,
+.slider,
+.favor,
+.event-left,
+.event-right,
+.event-left .slip-head span,
+.event-right .slip-head span,
+.event-left .matched-head span,
+.event-right .matched-head span,
+.support-wrap dt,
+.live-left,
+.live-right,
+.live-channel span,
+.game-list-col dt,
+.game-list-col dd,
+.game-list-col dd a,
+.scores-event,
+.scores-line,
+.game-info,
+.head-bets-agent .game-low_liq,
+.head-bets-agent .game-fancy,
+.head-bets-agent .game-sportsbook,
+.bets .bet-all a,
+.bets-HS .bet-all a,
+.bets-GH .bet-all a,
+.horse-box,
+.uniform,
+.horse_info-hover dt,
+.horse_info-hover dd,
+.line_market-name span,
+h3 .add-pin,
+h3 .delete-pin,
+h4 .add-pin,
+.tc-content h5 .add-pin,
+h4 .delete-pin,
+.tc-content h5 .delete-pin,
+.one_click-setting h4,
+.one_click-setting .tc-content h5,
+.tc-content .one_click-setting h5,
+.quick_bet-wrap dt,
+.quick_bet-wrap dd,
+.game-fancy .info-inplay,
+.game-fancy.in-play:before,
+.fancy-head h4,
+.fancy-head .tc-content h5,
+.tc-content .fancy-head h5,
+.fancy-head .in-play span:before,
+.sportsbook-head h4,
+.sportsbook-head .tc-content h5,
+.tc-content .sportsbook-head h5,
+.profile-wrap dt,
+.form_list dt,
+.filter-pop .btn-wrap .btn,
+.filter-pop .btn-wrap .btn-send,
+.filter-pop .btn-wrap .pages a,
+.pages .filter-pop .btn-wrap a,
+.filter-pop .btn-wrap .calendarTable_inputBox input,
+.calendarTable_inputBox .filter-pop .btn-wrap input,
+.filter-pop .btn-wrap .calendarTable_inputBox textarea,
+.calendarTable_inputBox .filter-pop .btn-wrap textarea,
+.market-float,
+.sum-pl dt,
+.head-balance,
+.pop-left,
+.pop-left dt,
+.select-betting .selection,
+.pop-right,
+.initial-balance dt,
+.final-balance dt,
+.initial-balance dd,
+.final-balance dd,
+.initial-balance dt span,
+.final-balance dt span,
+.search-wrap {
+  float: left;
+}
+
+.float-R,
+.btn-close,
+.login-wrap,
+.account-wrap,
+.language,
+.setting-wrap,
+.time_zone,
+.gmt,
+.menu-list .Go,
+.favor-set,
+.sum,
+.btn-wrap .btn-send,
+.btn-wrap .edit-function .btn,
+.btn-wrap .edit-function .btn-send,
+.btn-wrap .edit-function .pages a,
+.pages .btn-wrap .edit-function a,
+.btn-wrap .edit-function .calendarTable_inputBox input,
+.calendarTable_inputBox .btn-wrap .edit-function input,
+.btn-wrap .edit-function .calendarTable_inputBox textarea,
+.calendarTable_inputBox .btn-wrap .edit-function textarea,
+.cashout-wrap dl,
+.event-right,
+.live-head h3 span,
+.game-head .game-low_liq,
+.game-head .game-fancy,
+.game-head .game-sportsbook,
+.game-matched,
+.head-bets-agent .game-info,
+.more,
+.multi_refresh,
+.one_click-setting .a-edit,
+.one_click-setting .btn-send,
+.quick_bet-wrap .col-stake_list ul,
+.game-fancy,
+.fancy_bet .td-fancy_merge .btn-book,
+.sportsbook_bet .td-fancy_merge .btn-book,
+.fancy-info,
+.game-sportsbook,
+.sportsbook-head h4:after,
+.sportsbook-head .tc-content h5:after,
+.tc-content .sportsbook-head h5:after,
+.total-show .sports-switch {
+  float: right;
+}
+
+.align-L,
+.table01 caption,
+.table-s caption,
+.slip-back .refer,
+.slip-lay .refer,
+.slip-back .keep-option,
+.slip-lay .keep-option,
+.slip-head .col-bet,
+.matched-head .col-bet,
+.tips-popup,
+.full-amount,
+.no-data,
+.event-left .col-game,
+.event-right .col-game,
+.event-left .game-list-col dt,
+.game-list-col .event-left dt,
+.event-right .game-list-col dt,
+.game-list-col .event-right dt,
+.bets th,
+.bets-HS th,
+.bets-GH th,
+.bets .refer-bet,
+.bets-HS .refer-bet,
+.bets-GH .refer-bet,
+.bets .refer-book,
+.bets-HS .refer-book,
+.bets-GH .refer-book {
+  text-align: left;
+}
+
+.align-R,
+.table01,
+.table-s,
+.slip-back input,
+.slip-lay input,
+.slip-back textarea,
+.slip-lay textarea,
+.slip-back .col-profit,
+.slip-lay .col-profit,
+.slip-back .inn_runs dd,
+.slip-lay .inn_runs dd,
+.time_zone,
+.path ul,
+.slip-head .col-profit,
+.matched-head .col-profit,
+.cashout-wrap dl,
+.game-team .game-visit,
+.game-scores .game-visit,
+.bets .refer-book,
+.bets-HS .refer-book,
+.bets-GH .refer-book,
+.quick-bet-confirm li {
+  text-align: right;
+}
+
+.align-C,
+.loading li,
+.btn,
+.btn-send,
+.pages a,
+.calendarTable_inputBox input,
+.calendarTable_inputBox textarea,
+.change_pass,
+.slip-back dd,
+.slip-lay dd,
+.btn-live,
+.btn-book,
+.fancy-suspend span,
+.fancy-suspend-white span,
+.browser-wrap,
+.saddle_1,
+.saddle_1A,
+.saddle_1B,
+.saddle_1C,
+.saddle_1D,
+.saddle_1X,
+.saddle_1Y,
+.saddle_2,
+.saddle_2B,
+.saddle_2C,
+.saddle_2X,
+.saddle_3,
+.saddle_3C,
+.saddle_3D,
+.saddle_3E,
+.saddle_3X,
+.saddle_4,
+.saddle_4D,
+.saddle_4X,
+.saddle_5,
+.saddle_6,
+.saddle_7,
+.saddle_8,
+.saddle_9,
+.saddle_10,
+.saddle_11,
+.saddle_11F,
+.saddle_12,
+.saddle_12F,
+.saddle_13,
+.saddle_13F,
+.saddle_14,
+.saddle_14F,
+.saddle_15,
+.saddle_15F,
+.saddle_16,
+.saddle_16F,
+.saddle_17,
+.saddle_17F,
+.saddle_18,
+.saddle_18F,
+.saddle_19,
+.saddle_19F,
+.saddle_20,
+.saddle_20F,
+.saddle_21,
+.saddle_21F,
+.saddle_22,
+.saddle_22F,
+.saddle_23,
+.saddle_23F,
+.saddle_24,
+.saddle_24F,
+.saddle_25,
+.saddle_25F,
+.saddle_26,
+.saddle_26F,
+.saddle_27,
+.saddle_27F,
+.saddle_28,
+.saddle_28F,
+.saddle_29,
+.saddle_29F,
+.saddle_30,
+.saddle_30F,
+.login-wrap .btn-login,
+.cricexch .login-wrap .btn-signup,
+.account-wrap ul .logout a,
+.stake-set .stake_edit-input,
+.odds-set .stake_edit-input,
+.col-edit a,
+.slip-wrap p,
+.slip-head li,
+.matched-head li,
+.stake-popup a,
+.load-pending,
+.tab-highlight li,
+.tab-markets li,
+.message-wrap p,
+.dialog-wrap h4,
+.dialog-wrap-w h4,
+.dialog-wrap .tc-content h5,
+.tc-content .dialog-wrap h5,
+.dialog-wrap-w .tc-content h5,
+.tc-content .dialog-wrap-w h5,
+.dialog-wrap .break li,
+.dialog-wrap-w .break li,
+.support-wrap,
+.game-list-col dd a,
+.game-team .game-vs,
+.game-scores .game-vs,
+.game-scores ul .scores-box,
+.tennis .scores-box,
+.sum-status,
+.tab-HS a,
+.bets td,
+.bets-HS td,
+.bets-GH td,
+.horse-box li,
+.suspend,
+.btn-rules,
+.rules-wrap h3,
+.closed-next,
+.one_click-setting a,
+.one_click-stake,
+.one_click-stake input,
+.one_click-stake textarea,
+.quick_bet-progress .progress-bar-txt,
+.quick_bet-message dd,
+.fancy-info dt span,
+.confirm_box .white-wrap,
+.go-back,
+.pop-close,
+.tab a,
+.pages,
+.chart-wrap,
+.initial-balance dt span,
+.final-balance dt span,
+.announce-footer,
+.announce-content table,
+.article-date,
+.news-wrap h2 {
+  text-align: center;
+}
+@font-face {
+  font-family: CasinoNumFont;
+  src: url(./font/Casino3DMarquee.ttf);
+}
+@font-face {
+  font-family: Card Characters;
+  src: url(./font/card.ttf);
+}
+
+img.lrotate {
+  transform: rotate(270deg);
+}
+img.rrotate {
+  transform: rotate(90deg);
+}
+
+.background-none {
+  background: none;
+}
+
+.back-1.select {
+  background-color: #1a8ee1;
+  color: var(--secondary-bg);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.focus-none:focus {
+  outline: none;
+}
+
+.bets,
+.bets-HS,
+.bets-GH {
+  width: 100%;
+  margin-top: -24px;
+}
+
+.bets tr:hover,
+.bets-HS tr:hover,
+.bets-GH tr:hover {
+  background-color: #eff2f2;
+}
+
+.bets tr:hover .to-win,
+.bets-HS tr:hover .to-win,
+.bets-GH tr:hover .to-win {
+  background-position: -404px -1333px;
+}
+
+.bets tr:hover .to-lose,
+.bets-HS tr:hover .to-lose,
+.bets-GH tr:hover .to-lose {
+  background-position: -404px -2457px;
+}
+
+.bets th,
+.bets-HS th,
+.bets-GH th {
+  position: relative;
+  padding: 9px 10px;
+  border-bottom: 1px solid #7e97a7;
+  vertical-align: top;
+}
+
+.bets th p,
+.bets-HS th p,
+.bets-GH th p {
+  width: 292px;
+  margin-bottom: 0;
+}
+
+.bets th span,
+.bets-HS th span,
+.bets-GH th span {
+  font-weight: 400;
+}
+
+.bets th.predict,
+.bets-HS th.predict,
+.bets-GH th.predict {
+  padding: 0px 10px;
+}
+
+.bets th.predict p,
+.bets-HS th.predict p,
+.bets-GH th.predict p {
+  margin-bottom: 3px;
+}
+
+.bets td,
+.bets-HS td,
+.bets-GH td {
+  width: 8.97436%;
+  border-bottom: 1px solid #7e97a7;
+  /* border-left: 1px solid #ddd; */
+  font-weight: 700;
+}
+
+.bets td:hover,
+.bets-HS td:hover,
+.bets-GH td:hover {
+  background-color: #ededed;
+}
+
+.bets td a,
+.bets-HS td a,
+.bets-GH td a {
+  position: relative;
+  height: 40px;
+  color: #1e1e1e;
+  padding: 3px 0 2px;
+  cursor: pointer;
+}
+
+.bets td a:hover,
+.bets-HS td a:hover,
+.bets-GH td a:hover {
+  text-decoration: none;
+}
+
+.bets td span,
+.bets-HS td span,
+.bets-GH td span {
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.bets td.no-liq a,
+.bets-HS td.no-liq a,
+.bets-GH td.no-liq a {
+  line-height: 35px;
+}
+
+.bets td.no-liq span,
+.bets-HS td.no-liq span,
+.bets-GH td.no-liq span {
+  display: none;
+}
+
+.bets .refer-bet,
+.bets-HS .refer-bet,
+.bets-GH .refer-bet,
+.bets .refer-book,
+.bets-HS .refer-book,
+.bets-GH .refer-book {
+  font-size: 11px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+.bets .back-1,
+.bets-HS .back-1,
+.bets-GH .back-1 {
+  background-color: #72bbef;
+  border-left-color: var(--secondary-bg);
+}
+
+.bets .back-1:hover,
+.bets-HS .back-1:hover,
+.bets-GH .back-1:hover {
+  background-color: #80c2f1;
+}
+
+.bets .back-1.select,
+.bets-HS .back-1.select,
+.bets-GH .back-1.select {
+  background-color: #1a8ee1;
+  color: var(--secondary-bg);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.bets .back-1.select a,
+.bets-HS .back-1.select a,
+.bets-GH .back-1.select a {
+  color: var(--secondary-bg);
+}
+
+.bets .back-2,
+.bets-HS .back-2,
+.bets-GH .back-2 {
+  background-color: #b7d5eb;
+  border-left-color: var(--secondary-bg);
+}
+
+.bets .back-2:hover,
+.bets-HS .back-2:hover,
+.bets-GH .back-2:hover {
+  background-color: #c3dcee;
+}
+
+.bets .back-2.select,
+.bets-HS .back-2.select,
+.bets-GH .back-2.select {
+  background-color: #67a6d5;
+  color: var(--secondary-bg);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.bets .back-2.select a,
+.bets-HS .back-2.select a,
+.bets-GH .back-2.select a {
+  color: var(--secondary-bg);
+}
+
+.disable .bets .back-2,
+.disable .bets-HS .back-2,
+.disable .bets-GH .back-2 {
+  background-color: #ddd;
+}
+
+.bets .back-3,
+.bets-HS .back-3,
+.bets-GH .back-3 {
+  background-color: #d7e8f4;
+  border-left-color: var(--secondary-bg);
+}
+
+.bets .back-3:hover,
+.bets-HS .back-3:hover,
+.bets-GH .back-3:hover {
+  background-color: #e3eff7;
+}
+
+.bets .back-3.select,
+.bets-HS .back-3.select,
+.bets-GH .back-3.select {
+  background-color: #87bade;
+  color: var(--secondary-bg);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.bets .back-3.select a,
+.bets-HS .back-3.select a,
+.bets-GH .back-3.select a {
+  color: var(--secondary-bg);
+}
+
+.bets .lay-1,
+.bets-HS .lay-1,
+.bets-GH .lay-1 {
+  background-color: #faa9ba;
+  border-left-color: var(--secondary-bg);
+}
+
+.bets .lay-1:hover,
+.bets-HS .lay-1:hover,
+.bets-GH .lay-1:hover {
+  background-color: #fbb7c6;
+}
+
+.bets .lay-1.select,
+.bets-HS .lay-1.select,
+.bets-GH .lay-1.select {
+  background-color: #f4496d;
+  color: var(--secondary-bg);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.bets .lay-1.select a,
+.bets-HS .lay-1.select a,
+.bets-GH .lay-1.select a {
+  color: var(--secondary-bg);
+}
+
+.bets .lay-2,
+.bets-HS .lay-2,
+.bets-GH .lay-2 {
+  background-color: #efd3d9;
+  border-left-color: var(--secondary-bg);
+}
+
+.bets .lay-2:hover,
+.bets-HS .lay-2:hover,
+.bets-GH .lay-2:hover {
+  background-color: #f3dee3;
+}
+
+.bets .lay-2.select,
+.bets-HS .lay-2.select,
+.bets-GH .lay-2.select {
+  background-color: #d48898;
+  color: var(--secondary-bg);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.bets .lay-2.select a,
+.bets-HS .lay-2.select a,
+.bets-GH .lay-2.select a {
+  color: var(--secondary-bg);
+}
+
+.bets .lay-3,
+.bets-HS .lay-3,
+.bets-GH .lay-3 {
+  background-color: #f6e6ea;
+  border-left-color: var(--secondary-bg);
+}
+
+.bets .lay-3:hover,
+.bets-HS .lay-3:hover,
+.bets-GH .lay-3:hover {
+  background-color: #faf1f3;
+}
+
+.bets .lay-3.select,
+.bets-HS .lay-3.select,
+.bets-GH .lay-3.select {
+  background-color: #db9bab;
+  color: var(--secondary-bg);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.bets .lay-3.select a,
+.bets-HS .lay-3.select a,
+.bets-GH .lay-3.select a {
+  color: var(--secondary-bg);
+}
+
+.bets .bet-all:hover,
+.bets-HS .bet-all:hover,
+.bets-GH .bet-all:hover {
+  background-color: transparent;
+}
+
+.bets .bet-all td,
+.bets-HS .bet-all td,
+.bets-GH .bet-all td {
+  background-color: transparent;
+  border-left-color: transparent;
+  padding-bottom: 1px;
+}
+
+.bets .bet-all td.lay-all,
+.bets-HS .bet-all td.lay-all,
+.bets-GH .bet-all td.lay-all {
+  border-left-color: var(--secondary-bg);
+}
+
+.bets .bet-all a,
+.bets-HS .bet-all a,
+.bets-GH .bet-all a {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 21px;
+  line-height: 17px;
+  cursor: pointer;
+}
+
+.bets .bet-all img,
+.bets-HS .bet-all img,
+.bets-GH .bet-all img {
+  position: absolute;
+  top: 0;
+  width: calc(100% - 11px);
+  height: 100%;
+}
+
+.bets .bet-all span,
+.bets-HS .bet-all span,
+.bets-GH .bet-all span {
+  position: absolute;
+  width: 100%;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.bets .back-all,
+.bets-HS .back-all,
+.bets-GH .back-all {
+  background-position: -274px -229px;
+}
+
+.bets .back-all:hover,
+.bets-HS .back-all:hover,
+.bets-GH .back-all:hover,
+.bets .back-all.bg-backall-left-hover,
+.bets-HS .back-all.bg-backall-left-hover,
+.bets-GH .back-all.bg-backall-left-hover {
+  background-position: -274px -273px;
+}
+
+.bets .back-all img,
+.bets-HS .back-all img,
+.bets-GH .back-all img {
+  left: 11px;
+  background-repeat: repeat-x;
+  background-position: 0 -2091px;
+}
+
+.bets .back-all img:hover,
+.bets-HS .back-all img:hover,
+.bets-GH .back-all img:hover,
+.bets .back-all img.bg-backall-hover,
+.bets-HS .back-all img.bg-backall-hover,
+.bets-GH .back-all img.bg-backall-hover {
+  background-position: 0 -2113px;
+}
+
+.bets .back-all:hover img,
+.bets-HS .back-all:hover img,
+.bets-GH .back-all:hover img {
+  background-repeat: repeat-x;
+  background-position: 0 -2113px;
+}
+
+.bets .lay-all,
+.bets-HS .lay-all,
+.bets-GH .lay-all {
+  background-position: 100% -333px;
+}
+
+.bets .lay-all:hover,
+.bets-HS .lay-all:hover,
+.bets-GH .lay-all:hover,
+.bets .lay-all.bg-layall-right-hover,
+.bets-HS .lay-all.bg-layall-right-hover,
+.bets-GH .lay-all.bg-layall-right-hover {
+  background-position: 100% -377px;
+}
+
+.bets .lay-all img,
+.bets-HS .lay-all img,
+.bets-GH .lay-all img {
+  right: 11px;
+  background-repeat: repeat-x;
+  background-position: 0 -2667px;
+}
+
+.bets .lay-all img:hover,
+.bets-HS .lay-all img:hover,
+.bets-GH .lay-all img:hover,
+.bets .lay-all img.bg-layall-hover,
+.bets-HS .lay-all img.bg-layall-hover,
+.bets-GH .lay-all img.bg-layall-hover {
+  background-position: 0 -2689px;
+}
+
+.bets .lay-all:hover img,
+.bets-HS .lay-all:hover img,
+.bets-GH .lay-all:hover img {
+  background-repeat: repeat-x;
+  background-position: 0 -2689px;
+}
+
+.bets.disable td a,
+.disable.bets-HS td a,
+.disable.bets-GH td a {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.bets.disable .back-all,
+.disable.bets-HS .back-all,
+.disable.bets-GH .back-all {
+  background-position: -274px -251px;
+}
+
+.bets.disable .back-all img,
+.disable.bets-HS .back-all img,
+.disable.bets-GH .back-all img {
+  background-repeat: repeat-x;
+  background-position: 0 -2160px;
+}
+
+.bets.disable .lay-all,
+.disable.bets-HS .lay-all,
+.disable.bets-GH .lay-all {
+  background-position: 100% -355px;
+}
+
+.bets.disable .lay-all img,
+.disable.bets-HS .lay-all img,
+.disable.bets-GH .lay-all img {
+  background-repeat: repeat-x;
+  background-position: 0 -2160px;
+}
+
+.bets-HS th,
+.bets-GH th {
+  padding: 4px 10px 5px 5px;
+  overflow: visible;
+}
+
+.bets-HS td,
+.bets-GH td {
+  vertical-align: middle;
+}
+
+.bets-HS td a,
+.bets-GH td a {
+  height: 35px;
+}
+
+.bets-HS td.suspend span,
+.bets-GH td.suspend span {
+  line-height: 38px;
+}
+
+.bets-HS .predict th,
+.bets-GH .predict th {
+  padding: 3px 10px 3px 5px;
+}
+
+.bets-HS .predict td a,
+.bets-GH .predict td a {
+  padding: 10px 0 9px;
+}
+
+.bets-HS .predict .suspend,
+.bets-GH .predict .suspend {
+  height: 53px;
+}
+
+.bets-HS .predict .suspend span,
+.bets-GH .predict .suspend span {
+  height: 100%;
+  line-height: 53px;
+}
+
+.overflow-x {
+  overflow-x: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.back-bg-color, .lay-bg-color {
+  border: none;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.cmeter-container .btn-theme {
+  height: unset !important;
+}
+
+.m-t-10 {
+  margin-top: 10px !important;
+}
+.mt-1, .my-1 {
+  margin-top: .25rem!important;
+}
+.mt-2, .my-2 {
+  margin-top: .5rem!important;
+}
+.mt-3, .my-3 {
+  margin-top: 1rem!important;
+}
+.m-t-5 {
+  margin-top: 5px;
+}
+.mr-2, .mx-2 {
+  margin-left:.5rem!important;
+  margin-right:.5rem!important;
+}
+.m-r-5 {
+  margin-right: 5px;
+}
+.m-b-10 {
+  margin-bottom: 10px !important;
+}
+.m-b-0 {
+  margin-bottom: 0px !important;
+}
+.m-b-5 {
+  margin-bottom: 5px;
+}
+.m-l-5 {
+  margin-left: 5px;
+}
+.m-l-20 {
+  margin-left: 20px !important;
+}
+.ml-1, .mx-1 {
+  margin-left: .25rem!important;
+}
+.mr-15 {
+  margin-right: -15px;
+}
+.ml-15 {
+  margin-left: -15px;
+}
+.p-10 {
+  padding: 10px;
+}
+.p-r-5 {
+  padding-right: 5px !important;
+}
+.p-r-0 {
+  padding-right: 0px !important;
+}
+.p-l-5 {
+  padding-left: 5px !important;
+}
+.p-l-0 {
+  padding-left: 0px !important;
+}
+.fs10 {
+  font-size: 11px !important;
+}
+ .newcard .select{
+  border: 3px solid green !important;
+}

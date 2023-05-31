@@ -1,0 +1,175 @@
+<div class="page-sidebar" id="sidebarmain" *ngIf="!sidebarHide">
+  <div class="sidebar-header-wrapper">
+    <div id="searchWrap" class="search-wrap">
+      <input
+        id="searchMarket"
+        data-ng-model="Searchevent"
+        data-ng-change="SearchItem(Searchevent)"
+        class="searchinput"
+        type="text"
+        #searchInput
+        placeholder="search market... "
+        (keyup)="searchTerm$.next($event.target.value)"
+        autocomplete="off"
+      />
+      <i class="searchicon fa fa-search"></i>
+      <div
+        id="searchList"
+        class="suggestion-wrap search-result"
+        [style.display]="searchInput.value ? 'block' : 'none'"
+      >
+        <ul class="result-list" style="padding: 15px">
+          <ng-template #noData>
+            <li id="noMatching" style="">
+              <p class="no-matching">No events found matching ...</p>
+            </li>
+          </ng-template>
+          <li id="resultTemplate" style=""><a></a></li>
+          <ng-container *ngIf="allMatches && allMatches.length; else noData">
+            <li id="result" *ngFor="let nsearch of allMatches">
+              <a
+                *ngIf="nsearch.racing; else otherGamesTemp"
+                [routerLink]="[
+                  '/full-market',
+                  nsearch.SportbfId,
+                  nsearch.TourbfId,
+                  nsearch.mtBfId,
+                  nsearch.bfId
+                ]"
+                [queryParams]="{ o: true }"
+                >{{ nsearch.name }}
+              </a>
+              <ng-template #otherGamesTemp>
+                <a
+                  [routerLink]="[
+                        '/full-market',
+                        nsearch.SportbfId,
+                        nsearch.TourbfId,
+                        nsearch.mtBfId,
+                        nsearch.bfId,
+
+                      ]"
+                  >{{ nsearch.matchName }}
+                </a>
+              </ng-template>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+    <!-- <input id="searchMarket" type="text" class="searchinput" placeholder="search market... " /> -->
+    <!-- <input
+      id="searchMarket"
+      data-ng-model="Searchevent"
+      data-ng-change="SearchItem(Searchevent)"
+      class="searchinput"
+      type="text"
+      placeholder="search market... "
+    />
+    <i class="searchicon fa fa-search"></i>
+    <div class="search-result" style="display: none">
+      <ul class="result-list"></ul>
+    </div> -->
+  </div>
+
+  <div class="market-tree sidebar-offcanvas">
+    <ul id="sidebar1" class="nav sidebar-menu">
+      <li class="active">
+        <a (click)="showSportsList()">
+          <span
+            class="menu-text"
+            style="font-size: 13px; font-weight: bold; cursor: pointer"
+            >Sports
+          </span>
+          <span class="pull-right"
+            ><img
+              src="assets/images/ajax-loader.gif"
+              id="loading-indicator-tree"
+              style="display: none"
+              alt="loading.."
+          /></span>
+        </a>
+      </li>
+    </ul>
+    <div
+      class="slimScrollDiv"
+      id="slimScrollDiv"
+      style="position: relative; overflow: hidden; width: auto"
+    >
+      <ul id="sidebar" class="nav sidebar-menu" style="width: auto">
+        <li *ngFor="let sport of sportList">
+          <ng-container *ngIf="!selectedSport || sport.id == selectedSport.id && (sport.day == selectedSport.day)">
+            <a
+              style="font-size: 13px; font-weight: bold; cursor: pointer"
+              (click)="showTournamentsList(sport.id, sport.name, sport.day)"
+            >
+              {{ sport.name }}
+            </a>
+          </ng-container>
+        </li>
+        <ul class="nav sidebar-menu" *ngIf="selectedSport">
+          <li *ngFor="let tour of tournamentList">
+            <ng-container
+              *ngIf="!selectedTournament || selectedTournament.id == tour.id"
+            >
+              <a
+                (click)="showEventList(tour.id, tour.name)"
+                class="menu-dropdown"
+                style="cursor: pointer"
+              >
+                {{ tour.name }}
+              </a>
+            </ng-container>
+          </li>
+          <ul class="nav sidebar-menu" *ngIf="selectedTournament">
+            <li *ngFor="let event of eventsList">
+              <ng-container
+                *ngIf="!selectedEvent || selectedEvent.id == event.id"
+              >
+                <a
+                  (click)="showMarketList(event.id, event.name)"
+                  class="menu-dropdown"
+                  style="cursor: pointer"
+                >
+                  {{ event.name }}
+                </a>
+              </ng-container>
+            </li>
+            <ul class="nav sidebar-menu" *ngIf="selectedEvent">
+              <li *ngFor="let market of marketsList" routerLinkActive="active">
+                <ng-container
+                  *ngIf="!selectedMarket || selectedMarket != market.id"
+                >
+                  <a
+                    *ngIf="market.racing; else otherGamesTemp"
+                    [routerLink]="[
+                      '/full-market',
+                      selectedSport.id,
+                      selectedTournament.id,
+                      selectedEvent.id,
+                      market.bfId
+                    ]"
+                    [queryParams]="{ o: true }"
+                    >{{ market.name }}
+                  </a>
+                  <ng-template #otherGamesTemp>
+                    <a
+                      [routerLink]="[
+                        '/full-market',
+                        selectedSport.id,
+                        selectedTournament.id,
+                        selectedEvent.id,
+                        market.bfId
+                      ]"
+                      >{{ market.name }}
+                    </a>
+                  </ng-template>
+                </ng-container>
+              </li>
+            </ul>
+          </ul>
+        </ul>
+      </ul>
+    </div>
+  </div>
+</div>

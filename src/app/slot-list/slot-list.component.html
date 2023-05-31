@@ -1,0 +1,41 @@
+<div  role="main" class="right_col">
+    <div  class="wrapper mt-2 diamond-casino-container">
+        <div  class="card">
+            <div  class="row mt-2">
+                <div  class="col-md-12" style="    width: 100%;padding: 0;">
+                    <h4  class="casino-title mb-0">
+                        <div  class="arrows-left arrows"><span ></span></div>
+                        SLOT<div  class="arrows-right arrows"><span
+                                ></span></div>
+                    </h4>
+                </div>
+                <div class="casino-box-tabs">
+                    <div class="casino-tabs-menu">
+                        <a (click)="scrollLeft()" class="arrow-tabs arrow-left"><i class="fas fa-chevron-left"></i></a>
+                        <ul #tab1 class="nav nav-pills scroll"
+                       >
+                            <li class="nav-item" *ngFor="let pro of slotfilter"
+                            (click)="slotFilter(pro)"
+                            ><a href="javascript:void(0)" class="nav-link">
+                                    <span>{{pro | titlecase}}</span></a></li>
+                        </ul> 
+                        <a (click)="scrollRight()" class="arrow-tabs arrow-right"><i class="fas fa-chevron-right"></i></a>
+                    </div> 
+                </div>
+                <div  class="col-md-12" style="padding-top: 10px;">
+                    <div  class="col-md-2 col-xs-6 inner-img" *ngFor="let casino of data">
+                        <div  class="casino-box casinoicons"><a 
+                            routerLink="/slotgame/{{casino.id}}">
+                                <div  class="casino-icons"><img 
+                                        class="img-fluid" [src]="casino.img"></div>
+                                <!-- <div  class="casino-name">{{casino.name}}</div> -->
+                                <dl  class="entrance-title">
+                                    <dt >{{casino.name}}</dt>
+                                    <dd >PLay Now</dd>
+                                  </dl>
+                            </a></div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

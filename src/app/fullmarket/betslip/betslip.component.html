@@ -1,0 +1,672 @@
+<div class="affix-top tv-container">
+  <div (click)="toggleTv()" class="widget hidden-xs hidden-sm" id="liveStream" *ngIf="!isRace && !isTeenpatti">
+    <div class="widget-header">
+      <a href="javascript:void(0)" data-toggle="collapse"><i class="widget-icon fa fa-tv fa-minus"></i></a>
+      <span class="widget-caption">Live Broadcast</span>
+      <div class="widget-buttons">
+        <a href="javascript:void(0)" data-toggle="dispose">
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
+      <!--Widget Buttons-->
+    </div>
+    <div *ngIf="showTv" class="widget-body">
+      <iframe width="100%" height="225" class="responsive-iframe" [src]="tvUrl"></iframe>
+      <!-- <div class="btn-group" role="group" aria-label="button group"><span>Select: </span><span><button onclick="loadlive(this); return false;" id="21" type="button" data-ip="45.119.44.244" class="btn btn-xs">C1</button>&nbsp;</span></div>
+        <div id="tv-frame">
+        </div> -->
+    </div>
+  </div>
+  <div fxHide fxShow.gt-sm class="widget" id="BetSlipSection">
+    <div class="widget-header bordered-bottom bordered-sky">
+      <span class="widget-caption">Bet Slip</span>
+      <!-- <div class="widget-buttons">
+        Keep Alive on Suspend?
+        <label>
+          <input
+            style="z-index: -1000"
+            class="checkbox-slider toggle colored-blue"
+            id="chkkeepalive"
+            type="checkbox"
+          /><span class="text"></span>
+        </label>
+      </div> -->
+    </div>
+    <div class="widget-body" style="padding: 0px">
+      <div class="tabbable">
+        <ul class="nav nav-tabs tabs-flat nav-justified" id="myTab9">
+          <li class="active" id="aSimpleBet">
+            <a data-toggle="tab" href="#simpleBet">Single Bet </a>
+          </li>
+
+          <!-- <li class="tab-red" id="aJoriBet">
+            <a data-toggle="tab" href="#joriBet">Jori Bet </a>
+          </li> -->
+        </ul>
+
+        <div class="tab-content tabs-flat" style="padding: 3px">
+          <div id="simpleBet" *ngIf="
+              (backBetSlipDataArray && backBetSlipDataArray.length) || (layBetSlipDataArray && layBetSlipDataArray.length)
+              || (backTeenSlipDataArray && backTeenSlipDataArray.length)
+            " class="tab-pane in active">
+            <div id="BetSlipMain" class="betslip-wrapper" style="position: relative">
+              <a routerLink="/reports/stake" target="_blank" class="btn btn-xs pull-right"
+                style="margin-bottom: 3px">Customize Stake Buttons <i class="fa fa-edit"></i></a>
+              <br />
+              <table cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th width="40%" colspan="2" class="runner">
+                      (Bet For)
+                    </th>
+                    <th width="30%" class="oddsH">Odds</th>
+                    <th width="15%" class="stake">Stake</th>
+                    <th width="15%" class="profit">
+                      Profit or Liability
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="betslip">
+                  <ng-container *ngFor="
+                      let BetSlipData of backBetSlipDataArray;
+                      let $parent = index
+                    ">
+                    <ng-container *ngFor="
+                        let backBet of BetSlipData.backBetSlipData;
+                        let $index = index
+                      ">
+                      <tr class="BetSlipBack">
+                        <td class="delete">
+                          <a (click)="
+                              closeBetSlip($index, 'back', $parent)
+                            "><i class="fa fa-trash-o"></i></a>
+                        </td>
+                        <td>
+                          <span class="runnername"><strong>{{ backBet.runnerName }}
+                            </strong></span>
+                        </td>
+                        <td class="oddsH">
+                          <span>
+                            <div class="oddWrapper">
+                              <div class="odd-left">
+                                <button id="ldown-10301" (click)="
+                                    cDown(backBet, $index, $parent)
+                                  ">
+                                  <span class="fa fa-minus"></span></button><input tabindex="1" type="number"
+                                  id="10301-LayOdds" class="text oddInput numeric" [(ngModel)]="backBet.odds" /><button
+                                  id="lup-10301" (click)="cUp(backBet, $index, $parent)">
+                                  <span class="fa fa-plus"></span>
+                                </button>
+                              </div>
+                            </div>
+                          </span>
+                        </td>
+                        <td class="stake">
+                          <span class="stake"><input (input)="updateStake(backBet)" id="10301-LayStake" min="0"
+                              class="text stake numeric" type="number" [(ngModel)]="backBet.stake" />
+                          </span>
+                        </td>
+                        <td class="profit">
+                          <div class="wrapper">
+                            <span style="color: red; font-weight: 600" class="profit-value">{{ backBet.profit }}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="BetSlipBack">
+                        <td colspan="5">
+                          <div class="btnStake">
+                            <button class="btn btn-sm btn-default" (click)="stakeValue(stake.stake, backBet)"
+                              *ngFor="let stake of stakeList">
+                              {{
+                              stake.stake
+                              }}
+                              <!-- {{
+                                stake.stake > 999
+                                  ? stake.stake / 1000 + "k"
+                                  : stake.stake
+                              }} -->
+                            </button>
+
+                            <button class="btn btn-sm btn-default" routerLink="/reports/stake">
+                              Edit
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                    <ng-container *ngFor="
+                        let backBet of BetSlipData.backBookBetSlipData;
+                        let $index = index
+                      ">
+                      <tr class="BetSlipBack">
+                        <td class="delete">
+                          <a (click)="
+                              closeBetSlip($index, 'back', $parent)
+                            "><i class="fa fa-trash-o"></i></a>
+                        </td>
+                        <td>
+                          <span class="runnername"><strong>{{ backBet.runnerName }}
+                            </strong></span>
+                        </td>
+                        <td class="oddsH">
+                          <span>
+                            <div class="oddWrapper">
+                              <div class="odd-left">
+                                <button id="ldown-10301" (click)="
+                                    cDown(backBet, $index, $parent)
+                                  ">
+                                  <span class="fa fa-minus"></span></button><input tabindex="1" type="number"
+                                  id="10301-LayOdds" class="text oddInput numeric" [(ngModel)]="backBet.odds" /><button
+                                  id="lup-10301" (click)="cUp(backBet, $index, $parent)">
+                                  <span class="fa fa-plus"></span>
+                                </button>
+                              </div>
+                            </div>
+                          </span>
+                        </td>
+                        <td class="stake">
+                          <span class="stake"><input (input)="updateStake(backBet)" id="10301-LayStake" min="0"
+                              class="text stake numeric" type="number" [(ngModel)]="backBet.stake" />
+                          </span>
+                        </td>
+                        <td class="profit">
+                          <div class="wrapper">
+                            <span style="color: red; font-weight: 600" class="profit-value">{{ backBet.profit }}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="BetSlipBack">
+                        <td colspan="5">
+                          <div class="btnStake">
+                            <button class="btn btn-sm btn-default" (click)="stakeValue(stake.stake, backBet)"
+                              *ngFor="let stake of stakeList">
+                              {{
+                              stake.stake
+                              }}
+                              <!-- {{
+                                stake.stake > 999
+                                  ? stake.stake / 1000 + "k"
+                                  : stake.stake
+                              }} -->
+                            </button>
+                            <button class="btn btn-sm btn-default" routerLink="/reports/stake">
+                              Edit
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </ng-container>
+
+                  <!-- Teenpatti betslip -->
+                  <ng-container *ngFor="
+                      let backBet of backTeenSlipDataArray;
+                      let $index = index
+                    ">
+                    <tr class="BetSlip{{backBet.backlay | titlecase}}">
+                      <td class="delete">
+                        <a (click)="
+                            closeBetSlip($index, 'Teenback')
+                          "><i class="fa fa-trash-o"></i></a>
+                      </td>
+                      <td>
+                        <span class="runnername"><strong>{{ backBet.runnerName }}
+                          </strong></span>
+                      </td>
+                      <td class="oddsH">
+                        <span>
+                          <div class="oddWrapper">
+                            <div class="odd-left">
+                              <input tabindex="1" type="number" id="10301-LayOdds" class="text oddInput numeric"
+                                [(ngModel)]="backBet.odds" />
+                            </div>
+                          </div>
+                        </span>
+                      </td>
+                      <td class="stake">
+                        <span class="stake"><input (input)="updateStake(backBet)" id="10301-LayStake" min="0"
+                            class="text stake numeric" type="number" [(ngModel)]="backBet.stake" />
+                        </span>
+                      </td>
+                      <td class="profit">
+                        <div class="wrapper">
+                          <span style="color: red; font-weight: 600" class="profit-value">{{ backBet.profit }}</span>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="BetSlip{{backBet.backlay | titlecase}}">
+                      <td colspan="5">
+                        <div class="btnStake">
+                          <button class="btn btn-sm btn-default" (click)="stakeValue(stake.stake, backBet)"
+                            *ngFor="let stake of stakeList">
+                            {{
+                            stake.stake
+                            }}
+                            <!-- {{
+                              stake.stake > 999
+                                ? stake.stake / 1000 + "k"
+                                : stake.stake
+                            }} -->
+                          </button>
+
+                          <button class="btn btn-sm btn-default" routerLink="/reports/stake">
+                            Edit
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </ng-container>
+
+                  <ng-container *ngFor="
+                      let BetSlipData of layBetSlipDataArray;
+                      let $parent = index
+                    ">
+                    <ng-container *ngFor="
+                        let layBet of BetSlipData.layBetSlipData;
+                        let $index = index
+                      ">
+                      <tr class="BetSlipLay">
+                        <td class="delete">
+                          <a (click)="closeBetSlip($index, 'lay', $parent)"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                        <td>
+                          <span class="runnername"><strong>{{ layBet.runnerName }}
+                            </strong></span>
+                        </td>
+                        <td class="oddsH">
+                          <span>
+                            <div class="oddWrapper">
+                              <div class="odd-left">
+                                <button id="ldown-414464" (click)="cDown(layBet, $index, $parent)">
+                                  <span class="fa fa-minus"></span></button><input tabindex="1" type="number"
+                                  id="414464-LayOdds" class="text oddInput numeric" [(ngModel)]="layBet.odds" /><button
+                                  id="lup-414464" (click)="cUp(layBet, $index, $parent)">
+                                  <span class="fa fa-plus"></span>
+                                </button>
+                              </div>
+                            </div>
+                          </span>
+                        </td>
+                        <td class="stake">
+                          <span class="stake"><input (input)="updateStake(layBet)" class="text stake numeric"
+                              maxlength="7" type="number" [(ngModel)]="layBet.stake" />
+                          </span>
+                        </td>
+                        <td class="profit">
+                          <div class="wrapper">
+                            <span style="color: red; font-weight: 600" class="profit-value">{{ layBet.profit }}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="BetSlipLay">
+                        <td colspan="5">
+                          <div class="btnStake">
+                            <button class="btn btn-sm btn-default" (click)="stakeValue(stake.stake, layBet)"
+                              *ngFor="let stake of stakeList" [value]="stake.stake">
+                              {{
+                              stake.stake
+                              }}
+                              <!-- {{
+                                stake.stake > 999
+                                  ? stake.stake / 1000 + "k"
+                                  : stake.stake
+                              }} -->
+                            </button>
+
+                            <button class="btn btn-sm btn-default" routerLink="/reports/stake">
+                              Edit
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                    <ng-container *ngFor="
+                        let layBet of BetSlipData.layBookBetSlipData;
+                        let $index = index
+                      ">
+                      <tr class="BetSlipLay">
+                        <td class="delete">
+                          <a (click)="closeBetSlip($index, 'lay', $parent)"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                        <td>
+                          <span class="runnername"><strong>{{ layBet.runnerName }}
+                            </strong></span>
+                        </td>
+                        <td class="oddsH">
+                          <span>
+                            <div class="oddWrapper">
+                              <div class="odd-left">
+                                <button id="ldown-414464" (click)="cDown(layBet, $index, $parent)">
+                                  <span class="fa fa-minus"></span></button><input tabindex="1" type="number"
+                                  id="414464-LayOdds" class="text oddInput numeric" [(ngModel)]="layBet.odds" /><button
+                                  id="lup-414464" (click)="cUp(layBet, $index, $parent)">
+                                  <span class="fa fa-plus"></span>
+                                </button>
+                              </div>
+                            </div>
+                          </span>
+                        </td>
+                        <td class="stake">
+                          <span class="stake"><input (input)="updateStake(layBet)" class="text stake numeric"
+                              maxlength="7" type="number" [(ngModel)]="layBet.stake" />
+                          </span>
+                        </td>
+                        <td class="profit">
+                          <div class="wrapper">
+                            <span style="color: red; font-weight: 600" class="profit-value">{{ layBet.profit }}</span>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="BetSlipLay">
+                        <td colspan="5">
+                          <div class="btnStake">
+                            <button class="btn btn-sm btn-default" (click)="stakeValue(stake.stake, layBet)"
+                              *ngFor="let stake of stakeList" [value]="stake.stake">
+                              {{
+                              stake.stake
+                              }}
+                              <!-- {{
+                                stake.stake > 999
+                                  ? stake.stake / 1000 + "k"
+                                  : stake.stake
+                              }} -->
+                            </button>
+
+                            <button class="btn btn-sm btn-default" routerLink="/reports/stake">
+                              Edit
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </ng-container>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="5" style="
+                        text-align: center;
+                        font-size: 12px;
+                        font-weight: bold;
+                        padding-top: 5px;
+                      ">
+                      <span id="betTimer"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <button id="cancelAll" (click)="removeAllBetSlip('remove',betSlipData)">
+                        Clear All
+                      </button>
+                    </td>
+                    <td colspan="3" align="right">
+                      <button [disabled]="disablePlaceBet" id="placebet_btn" (click)="placeBet()">
+                        Submit
+                      </button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+              <div id="loading_place_bet" class="pendding" style="display: none">
+                <!-- <span>
+                  {{ timeRemaining }}
+                </span> -->
+                <br />
+                <p>Processing your request, please wait...</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="joriBet" class="tab-pane bg-whitesmoke" style="display: none">
+            <div id="BetSlipJori" class="betslip-wrapper hide" style="position: relative">
+              <span class="pull-left" style="
+                  vertical-align: middle;
+                  height: 20px;
+                  line-height: 0;
+                ">Rate Reverse?
+                <label>
+                  <input class="checkbox-slider slider-icon colored-danger yesno" id="rateReverse" type="checkbox" />
+                  <span class="text"></span>
+                </label>
+              </span>
+              <a routerLink="/reports/stake" target="_blank" class="btn btn-xs pull-right"
+                style="margin-bottom: 3px">Customize Stake Buttons <i class="fa fa-edit"></i></a>
+              <br />
+              <table cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th width="40%" colspan="2" class="runner">
+                      (Bet For)
+                    </th>
+                    <th width="25%" class="oddsH">Odds</th>
+                    <th width="15%" class="stake">Stake</th>
+                    <th width="20%" class="profit">Profit/Liability</th>
+                  </tr>
+                </thead>
+                <tbody id="Jbetslip"></tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="5" style="
+                        text-align: center;
+                        font-size: 12px;
+                        font-weight: bold;
+                        padding-top: 5px;
+                      ">
+                      <span id="JoribetTimer"></span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">
+                      <button id="cancelAllJori" (click)="removeAllBetSlip('remove',betSlipData)">
+                        Clear
+                      </button>
+                    </td>
+                    <td colspan="3" align="right">
+                      <button id="btnJPlaceBet" class="btn btn-xs btn-info" (click)="placeBet()">
+                        Submit
+                      </button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="clear-fix"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="widget">
+    <div class="widget-header bordered-bottom bordered-sky">
+      <span class="widget-caption">My Bets</span>
+      <div class="widget-buttons">
+        <img src="assets/images/ajax-loader.gif" id="loading-indicator" style="display: none" />
+        <a (click)="listBet()" title="Refresh">
+          <i class="fa fa-repeat"></i>
+        </a>
+      </div>
+    </div>
+    <div class="widget-body">
+      <div class="mybet-wrapper" id="mybetWrapper">
+        <div class="slimScrollDiv" style="
+            position: relative;
+            overflow: hidden;
+            width: auto;
+            height: 438px;
+          ">
+          <div id="matchWrapper" style="overflow: auto; width: auto; height: 438px">
+            <!-- <table class="table table-condensed" width="100%">
+              <thead>
+                <tr>
+                  <th colspan="3">
+                    Unmatched Bets <span id="ttlUMB"></span>
+                  </th>
+                  <th>
+                    <button
+                      id="btnCancelAll"
+                      onclick="cacelAll(this);return false; "
+                      class="btn btn-xs btn-danger pull-right"
+                    >
+                      Cancel All
+                    </button>
+                  </th>
+                </tr>
+                <tr>
+                  <th colspan="2">Runner Name</th>
+                  <th>Bet Price</th>
+                  <th>Bet Size</th>
+                </tr>
+              </thead>
+              <tbody data-type="unmatched" id="unMatched"></tbody>
+            </table> -->
+            <span class="pull-right" style="vertical-align: middle">Average Bets?
+              <label style="padding-top: 10px">
+                <input style="z-index: -1000" class="checkbox-slider toggle colored-blue" id="chkavgBets"
+                  type="checkbox" [(ngModel)]="isAverageBets" (change)="getAvgOdds(isAverageBets)" />
+                <span class="text"></span>
+              </label>
+            </span>
+            <table class="table table-condensed" width="100%" style="margin-bottom: 8px">
+              <thead>
+                <tr>
+                  <th colspan="2">
+                    Matched Bets <span id="ttlMB"></span>
+                  </th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th>Runner Name</th>
+                  <th>Bet Price</th>
+                  <th>Bet Size</th>
+                </tr>
+              </thead>
+              <tbody id="Matched">
+                <ng-container *ngFor="let item of matchedData; trackBy: trackByCon">
+                  <tr class="Lay" *ngIf="
+                      item.betType === 'LAY' ||
+                      item.betType == 'lay' ||
+                      item.betType == 'NO' ||
+                      item.betType == 'no'
+                    " title="Bet ID: {{ item.consolidateId }}">
+                    <td class="runner">{{ item.selName }}</td>
+                    <td>
+                      {{
+                      item.isFancy == 1
+                      ? item.runs + "/" + item.odds
+                      : item.odds
+                      }}
+                    </td>
+                    <td>{{ item.stake | number: "0.2" }}</td>
+                  </tr>
+                  <tr class="Back" data-toggle="tooltip" *ngIf="
+                      item.betType == 'BACK' ||
+                      item.betType == 'back' ||
+                      item.betType == 'YES' ||
+                      item.betType == 'yes'
+                    " title="Bet ID: {{ item.consolidateId }}">
+                    <td class="runner">{{ item.selName }}</td>
+                    <td>
+                      {{
+                      item.isFancy == 1
+                      ? item.runs + "/" + item.odds
+                      : item.odds
+                      }}
+                    </td>
+                    <td>{{ item.stake | number: "0.2" }}</td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+
+            <table class="table table-condensed" width="100%">
+              <thead>
+                <tr>
+                  <th colspan="2">
+                    Unmatched Bets <span id="ttlMB"></span>
+                  </th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th>Runner Name</th>
+                  <th>Bet Price</th>
+                  <th>Bet Size</th>
+                  <th>Cancel</th>
+                </tr>
+              </thead>
+              <tbody id="Matched">
+                <ng-container *ngFor="let item of unMatchedData; trackBy: trackByCon">
+                  <tr class="Lay" *ngIf="
+                      item.betType === 'LAY' ||
+                      item.betType == 'lay' ||
+                      item.betType == 'NO' ||
+                      item.betType == 'no'
+                    " title="Bet ID: {{ item.consolidateId }}">
+                    <td class="runner">{{ item.selName }}</td>
+                    <td>
+                      {{
+                      item.isFancy == 1
+                      ? item.runs + "/" + item.odds
+                      : item.odds
+                      }}
+                    </td>
+                    <td>{{ item.stake | number: "0.2" }}</td>
+                    <td>
+                      <button (click)="cancelBet(item.consolidateId)">
+                        Cancel
+                      </button>
+                    </td>
+                  </tr>
+                  <tr class="Back" data-toggle="tooltip" *ngIf="
+                      item.betType == 'BACK' ||
+                      item.betType == 'back' ||
+                      item.betType == 'YES' ||
+                      item.betType == 'yes'
+                    " title="Bet ID: {{ item.consolidateId }}">
+                    <td class="runner">{{ item.selName }}</td>
+                    <td>
+                      {{
+                      item.isFancy == 1
+                      ? item.runs + "/" + item.odds
+                      : item.odds
+                      }}
+                    </td>
+                    <td>{{ item.stake | number: "0.2" }}</td>
+                    <td>
+                      <button (click)="cancelBet(item.consolidateId)">
+                        Cancel
+                      </button>
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <div class="slimScrollBar" style="
+              background: rgb(0, 0, 0);
+              width: 10px;
+              position: absolute;
+              top: 0px;
+              opacity: 0.4;
+              display: none;
+              border-radius: 7px;
+              z-index: 99;
+              right: 1px;
+              height: 438px;
+            "></div>
+          <div class="slimScrollRail" style="
+              width: 10px;
+              height: 100%;
+              position: absolute;
+              top: 0px;
+              display: block;
+              border-radius: 7px;
+              background: rgb(34, 34, 34);
+              opacity: 0.1;
+              z-index: 90;
+              right: 1px;
+            "></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
